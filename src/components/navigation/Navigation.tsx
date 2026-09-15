@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/data/content";
 import { profile } from "@/data/profile";
@@ -9,6 +9,7 @@ import { LinkedInIcon } from "@/components/ui/icons";
 
 export function Navigation() {
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const sectionIds = useMemo(() => navLinks.map((link) => link.href.slice(1)), []);
   const [activeId, setActiveId] = useState(sectionIds[0] ?? "home");
 
@@ -46,10 +47,30 @@ export function Navigation() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    function onPointerDown(e: PointerEvent) {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [open]);
+
   const linkedInAriaLabel = `Visit ${profile.name} on LinkedIn`;
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+    <header ref={headerRef} className="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
       <div className="mx-auto w-full max-w-[1240px]">
         <nav
           className="flex h-16 items-center justify-between rounded-[20px] border border-[rgba(17,24,39,0.08)] bg-white/90 px-5 shadow-[0_10px_30px_-15px_rgba(17,24,39,0.3)] backdrop-blur-md sm:px-7"
@@ -112,7 +133,7 @@ export function Navigation() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-hairline text-fg lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-fg lg:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>

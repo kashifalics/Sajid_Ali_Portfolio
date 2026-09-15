@@ -3,6 +3,7 @@ import { profile, whatsappHref } from "@/data/profile";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { LinkedInIcon, WhatsAppIcon } from "@/components/ui/icons";
+import { cn } from "@/lib/utils";
 
 const methods = [
   {
@@ -60,7 +61,10 @@ export function Contact() {
           </div>
 
           <div
-            className={`mt-12 grid gap-4 border-t border-hairline pt-10 sm:grid-cols-${methods.length}`}
+            className={cn(
+              "mt-12 grid gap-4 border-t border-hairline pt-10",
+              methods.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"
+            )}
           >
             {methods.map((method) => {
               const Icon = method.icon;
