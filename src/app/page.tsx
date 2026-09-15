@@ -2,6 +2,7 @@ import { SiteBackground } from "@/components/background/SiteBackground";
 import { Navigation } from "@/components/navigation/Navigation";
 import { Hero } from "@/components/hero/Hero";
 import { CredibilityStrip } from "@/components/credibility/CredibilityStrip";
+import { TechMarquee } from "@/components/credibility/TechMarquee";
 import { Work } from "@/components/work/Work";
 import { Experience } from "@/components/experience/Experience";
 import { Capabilities } from "@/components/capabilities/Capabilities";
@@ -17,6 +18,7 @@ export default function Home() {
       <main className="relative z-10">
         <Hero />
         <CredibilityStrip />
+        <TechMarquee />
         <Work />
         <Experience />
         <Capabilities />

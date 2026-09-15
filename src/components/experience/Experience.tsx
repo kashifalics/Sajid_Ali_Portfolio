@@ -1,3 +1,4 @@
+import { Calendar, MapPin } from "lucide-react";
 import { experience } from "@/data/experience";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -29,7 +30,8 @@ export function Experience() {
                 {current.role}
               </span>
               {current.location ? (
-                <span className="text-xs text-fg-faint">
+                <span className="flex items-center gap-1 text-xs text-fg-faint">
+                  <MapPin size={12} aria-hidden="true" />
                   {current.location}
                 </span>
               ) : null}
@@ -58,22 +60,48 @@ export function Experience() {
           </div>
         </Reveal>
 
-        <StaggerGroup className="mt-3 border-t border-hairline">
+        <StaggerGroup className="mt-6 grid gap-4">
           {rest.map((role) => (
             <StaggerItem key={`${role.company}-${role.period}`}>
-              <div className="flex flex-col gap-1 border-b border-hairline py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-                <div className="sm:w-1/3">
-                  <span className="text-sm font-semibold text-fg">
+              <div className="rounded-2xl border border-hairline bg-surface p-6 transition-colors hover:border-accent/25 sm:p-7">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h3 className="text-base font-semibold text-fg sm:text-lg">
                     {role.company}
-                  </span>
-                  <span className="block text-xs text-fg-faint sm:hidden">
+                  </h3>
+                  <span className="flex items-center gap-1.5 text-xs font-medium tracking-wide text-fg-faint uppercase">
+                    <Calendar size={12} aria-hidden="true" />
                     {role.period}
                   </span>
                 </div>
-                <p className="text-sm text-fg-muted sm:w-1/3">{role.role}</p>
-                <span className="hidden text-xs text-fg-faint sm:block sm:w-1/6 sm:text-right">
-                  {role.period}
-                </span>
+                <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <span className="text-sm font-medium text-accent">
+                    {role.role}
+                  </span>
+                  {role.location ? (
+                    <span className="flex items-center gap-1 text-xs text-fg-faint">
+                      <MapPin size={12} aria-hidden="true" />
+                      {role.location}
+                    </span>
+                  ) : null}
+                </div>
+
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-fg-muted">
+                  {role.description}
+                </p>
+
+                {role.highlights ? (
+                  <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+                    {role.highlights.map((h) => (
+                      <li
+                        key={h}
+                        className="flex items-start gap-2 text-xs text-fg-muted sm:text-sm"
+                      >
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent/60" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </div>
             </StaggerItem>
           ))}

@@ -42,10 +42,7 @@ export function Hero() {
             animate="show"
             className="max-w-xl"
           >
-            <motion.span
-              variants={itemVariants}
-              className="section-label inline-block"
-            >
+            <motion.span variants={itemVariants} className="section-label">
               {profile.eyebrow}
             </motion.span>
 

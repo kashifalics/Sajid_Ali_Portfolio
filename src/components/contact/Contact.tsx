@@ -39,7 +39,7 @@ export function Contact() {
       <Container>
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="section-label">Contact</span>
-          <h2 className="mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+          <h2 className="mt-6 font-serif text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
             Let&apos;s Talk Technology.
           </h2>
           <p className="mt-5 text-base leading-relaxed text-fg-muted sm:text-lg">

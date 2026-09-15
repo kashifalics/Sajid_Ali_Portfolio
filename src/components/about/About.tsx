@@ -11,7 +11,7 @@ export function About() {
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <Reveal>
             <span className="section-label">About</span>
-            <p className="mt-6 text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
+            <p className="mt-6 font-serif text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
               Engineering with an architecture mindset.
             </p>
           </Reveal>

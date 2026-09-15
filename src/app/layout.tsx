@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/data/profile";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["600", "700"],
   display: "swap",
 });
 
@@ -94,7 +101,10 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} h-full overflow-x-hidden`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${playfair.variable} h-full overflow-x-hidden`}
+    >
       <body className="min-h-full overflow-x-hidden bg-canvas text-fg antialiased selection:bg-accent/20">
         <script
           type="application/ld+json"

@@ -36,6 +36,7 @@
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", sans-serif;
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
 }
 
 * {
@@ -117,9 +118,15 @@ body {
 /* ---------- section rhythm ---------- */
 
 .section-label {
-  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--hairline-strong);
+  background: var(--accent-3);
+  padding: 0.3rem 0.85rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -182,6 +189,22 @@ body {
   animation: pulse-soft 4s ease-in-out infinite;
 }
 
+/* ---------- tech marquee ---------- */
+
+.marquee-track {
+  width: max-content;
+  animation: marquee-scroll 36s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* ---------- architecture flow line ---------- */
 
 .flow-line {
@@ -236,6 +259,10 @@ body {
   }
 
   .animate-pulse-soft {
+    animation: none !important;
+  }
+
+  .marquee-track {
     animation: none !important;
   }
 

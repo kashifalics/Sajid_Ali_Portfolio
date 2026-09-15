@@ -1,36 +1,76 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 import { profile } from "@/data/profile";
 
-const ROTATE_MS = 3000;
+const TYPE_MS = 45;
+const DELETE_MS = 25;
+const PAUSE_MS = 1600;
+const SWAP_MS = 3000;
 
 export function DynamicTitle() {
-  const [index, setIndex] = useState(0);
   const shouldReduceMotion = useReducedMotion();
+  const [displayed, setDisplayed] = useState<string>("");
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setIndex((i) => (i + 1) % profile.titles.length);
-    }, ROTATE_MS);
-    return () => clearInterval(id);
-  }, []);
+    if (shouldReduceMotion) {
+      let i = 0;
+      const showCurrent = () => setDisplayed(profile.titles[i]);
+      const startId = setTimeout(showCurrent, 0);
+      const intervalId = setInterval(() => {
+        i = (i + 1) % profile.titles.length;
+        showCurrent();
+      }, SWAP_MS);
+      return () => {
+        clearTimeout(startId);
+        clearInterval(intervalId);
+      };
+    }
+
+    let titleIndex = 0;
+    let charCount = 0;
+    let phase: "typing" | "deleting" = "typing";
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    function tick() {
+      const fullText = profile.titles[titleIndex];
+
+      if (phase === "typing") {
+        charCount++;
+        setDisplayed(fullText.slice(0, charCount));
+        const done = charCount >= fullText.length;
+        if (done) phase = "deleting";
+        timeoutId = setTimeout(tick, done ? PAUSE_MS : TYPE_MS);
+        return;
+      }
+
+      charCount--;
+      setDisplayed(fullText.slice(0, charCount));
+      if (charCount <= 0) {
+        titleIndex = (titleIndex + 1) % profile.titles.length;
+        phase = "typing";
+      }
+      timeoutId = setTimeout(tick, DELETE_MS);
+    }
+
+    timeoutId = setTimeout(tick, TYPE_MS);
+    return () => clearTimeout(timeoutId);
+  }, [shouldReduceMotion]);
 
   return (
-    <div className="relative h-10 overflow-hidden sm:h-12">
-      <AnimatePresence mode="wait">
-        <motion.p
-          key={index}
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -14 }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 flex items-center overflow-hidden text-ellipsis whitespace-nowrap text-[clamp(1.15rem,5.2vw,1.25rem)] font-medium text-accent sm:text-2xl"
-        >
-          {profile.titles[index]}
-        </motion.p>
-      </AnimatePresence>
+    <div className="relative flex h-10 items-center gap-1 sm:h-12">
+      <p
+        aria-hidden="true"
+        className="min-w-0 overflow-hidden text-ellipsis whitespace-nowrap text-[clamp(1.15rem,5.2vw,1.25rem)] font-medium text-accent sm:text-2xl"
+      >
+        {displayed}
+      </p>
+      <span
+        aria-hidden="true"
+        className="h-[0.85em] w-0.5 shrink-0 translate-y-[0.05em] animate-pulse-soft bg-accent"
+      />
+      <span className="sr-only">{profile.titles.join(" · ")}</span>
     </div>
   );
 }
