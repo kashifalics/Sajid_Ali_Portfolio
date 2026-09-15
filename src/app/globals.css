@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+:root {
+  --canvas: #ffffff;
+  --raised: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #f7f8fa;
+
+  --fg: #111111;
+  --fg-muted: #4b5563;
+  --fg-faint: #8a929d;
+
+  --accent: #2563eb;
+  --accent-2: #0ea5e9;
+  --accent-3: #eff6ff;
+
+  --hairline: #e5e7eb;
+  --hairline-strong: rgba(37, 99, 235, 0.25);
+
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-raised: var(--raised);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-faint: var(--fg-faint);
+
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+}
+
+* {
+  border-color: var(--hairline);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--fg);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.16);
+  color: var(--fg);
+}
+
+/* ---------- utilities ---------- */
+
+.border-hairline {
+  border-color: var(--hairline);
+}
+
+.border-hairline-strong {
+  border-color: var(--hairline-strong);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.mask-fade-x {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+/* ---------- background system ---------- */
+
+.bg-grid {
+  background-image: linear-gradient(
+      to right,
+      rgba(17, 17, 17, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(17, 17, 17, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 0%,
+    black 40%,
+    transparent 90%
+  );
+}
+
+.bg-glow-a {
+  background: radial-gradient(
+    circle,
+    rgba(37, 99, 235, 0.09) 0%,
+    rgba(37, 99, 235, 0) 70%
+  );
+}
+
+.bg-glow-b {
+  background: radial-gradient(
+    circle,
+    rgba(14, 165, 233, 0.08) 0%,
+    rgba(14, 165, 233, 0) 70%
+  );
+}
+
+/* ---------- section rhythm ---------- */
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ---------- orbit system ---------- */
+
+.orbit-track {
+  animation: orbit-rotate var(--orbit-duration, 25s) linear infinite;
+}
+
+.orbit-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: rotate(var(--angle)) translateX(var(--radius));
+}
+
+.orbit-item-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: orbit-counter-rotate var(--orbit-duration, 25s) linear infinite;
+  transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle)));
+}
+
+.orbit-paused .orbit-track,
+.orbit-paused .orbit-item-content {
+  animation-play-state: paused;
+}
+
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-counter-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle)));
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle) - 360deg));
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+/* ---------- architecture flow line ---------- */
+
+.flow-line {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(37, 99, 235, 0.9) 15%,
+    rgba(37, 99, 235, 0.12) 40%,
+    transparent 55%
+  );
+  background-size: 100% 260%;
+  animation: flow-down 5s linear infinite;
+}
+
+@keyframes flow-down {
+  from {
+    background-position: 0 -160%;
+  }
+  to {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes bg-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-bg-fade-in {
+  animation: bg-fade-in 1.4s ease-out both;
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .orbit-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .orbit-item-content {
+    animation: none !important;
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle))) !important;
+  }
+
+  .animate-pulse-soft {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
