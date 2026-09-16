@@ -28,6 +28,9 @@ const stack: StackItem[] = [
   { label: "Kubernetes", Icon: SiKubernetes, color: "#326CE5" },
   { label: "Microservices", Icon: Boxes },
   { label: "API-First Design", Icon: Webhook },
+  // OPEN QUESTION (see project checklist): Appian has no supporting case
+  // study or experience bullet on the site yet — kept rather than silently
+  // dropped, but flag for Sajid to confirm a project to cite or remove it.
   { label: "Appian", Icon: SiAppian },
   { label: "Enterprise Integration", Icon: GitMerge },
   { label: "CI/CD", Icon: Workflow },

@@ -7,9 +7,16 @@ export type SystemProject = {
   capabilities: string[];
   flow: string[];
   tags: string[];
+  // OPEN QUESTION (see project checklist): no outcome metrics were provided
+  // for any case study. This placeholder must be replaced with real,
+  // confirmed figures before launch — never fabricate a number here.
+  impact: string;
 };
 
 const role = "Development & Team Leadership — Abu Dhabi Insurance Authority";
+
+const IMPACT_PLACEHOLDER =
+  "[Impact metric pending — confirm with Sajid: processing time reduced, entities integrated, or team size on this specific project]";
 
 export const systems: SystemProject[] = [
   {
@@ -33,6 +40,7 @@ export const systems: SystemProject[] = [
       "Reporting",
     ],
     tags: ["Dynamic Workflows", "Enterprise Integration", "ASP.NET"],
+    impact: IMPACT_PLACEHOLDER,
   },
   {
     index: "02",
@@ -55,6 +63,7 @@ export const systems: SystemProject[] = [
       "KPI Reporting",
     ],
     tags: ["Dynamic Workflows", "KPI Reporting", "ASP.NET", "SQL Server"],
+    impact: IMPACT_PLACEHOLDER,
   },
   {
     index: "03",
@@ -77,6 +86,7 @@ export const systems: SystemProject[] = [
       "Action Follow-Up",
     ],
     tags: ["Workflow Automation", "Governance", "ASP.NET"],
+    impact: IMPACT_PLACEHOLDER,
   },
   {
     index: "04",
@@ -99,6 +109,7 @@ export const systems: SystemProject[] = [
       "Enforcement Outcome",
     ],
     tags: ["Dynamic Workflows", "Enterprise Integration", "ASP.NET", "SQL Server"],
+    impact: IMPACT_PLACEHOLDER,
   },
   {
     index: "05",
@@ -121,5 +132,6 @@ export const systems: SystemProject[] = [
       "Renewal Tracking",
     ],
     tags: ["Dynamic Workflows", "ASP.NET", "SQL Server", "Payments"],
+    impact: IMPACT_PLACEHOLDER,
   },
 ];

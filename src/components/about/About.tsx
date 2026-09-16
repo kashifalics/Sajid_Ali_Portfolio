@@ -2,6 +2,7 @@ import { GraduationCap, BadgeCheck } from "lucide-react";
 import { howIWork, certifications, education, languages } from "@/data/content";
 import { Container } from "@/components/ui/Container";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
+import { RegionRow } from "@/components/about/RegionRow";
 
 export function About() {
   return (
@@ -28,6 +29,8 @@ export function About() {
             </p>
           </Reveal>
         </div>
+
+        <RegionRow />
 
         {/* how I work */}
         <div className="mt-16 border-t border-hairline pt-12 md:mt-20 md:pt-16">

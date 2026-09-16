@@ -15,7 +15,13 @@ export const profile = {
   yearsExperience: "16+",
   location: "Abu Dhabi, UAE",
   email: "sajid_ch1@yahoo.com",
-  linkedin: "https://www.linkedin.com/in/sajid-ali-0740aa28",
+  // OPEN QUESTION (see project checklist): multiple LinkedIn slug variants
+  // exist across source materials. Pulled into an env var so there's one
+  // place to fix once the correct slug is confirmed with Sajid — the value
+  // below is only a fallback default, not a verified answer.
+  linkedin:
+    process.env.NEXT_PUBLIC_LINKEDIN_URL ??
+    "https://www.linkedin.com/in/sajid-ali-0740aa28",
   linkedinLabel: "linkedin.com/in/sajid-ali-0740aa28",
   // No verified WhatsApp number was provided in the source profile/resume.
   // Leave empty rather than fabricating one — every WhatsApp CTA in the UI

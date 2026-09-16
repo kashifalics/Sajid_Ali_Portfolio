@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { profile } from "@/data/profile";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -103,7 +98,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} h-full overflow-x-hidden`}
+      className={`${GeistSans.variable} ${playfair.variable} h-full overflow-x-hidden`}
     >
       <body className="min-h-full overflow-x-hidden bg-canvas text-fg antialiased selection:bg-accent/20">
         <script

@@ -1,4 +1,4 @@
-import { Layers } from "lucide-react";
+import { Layers, AlertTriangle } from "lucide-react";
 import { systems } from "@/data/projects";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -72,6 +72,17 @@ export function Work() {
                             {tag}
                           </span>
                         ))}
+                      </div>
+
+                      <div className="mt-6 flex items-start gap-2 rounded-lg border border-dashed border-hairline bg-canvas px-3.5 py-3">
+                        <AlertTriangle
+                          size={14}
+                          className="mt-0.5 shrink-0 text-amber-500"
+                          aria-hidden="true"
+                        />
+                        <p className="text-xs leading-relaxed text-fg-faint italic">
+                          {project.impact}
+                        </p>
                       </div>
                     </div>
 

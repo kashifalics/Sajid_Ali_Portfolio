@@ -48,7 +48,7 @@ export function Hero() {
 
             <motion.h1
               variants={itemVariants}
-              className="mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
+              className="mt-6 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl"
             >
               <span className="text-fg-muted">Hi, I&apos;m</span>
               <br />
@@ -72,7 +72,8 @@ export function Hero() {
             >
               <span className="h-px w-8 bg-accent/60" />
               <span className="text-xs font-semibold tracking-[0.2em] text-fg-faint uppercase">
-                {profile.yearsExperience} Years of Experience
+                <span className="text-gold">{profile.yearsExperience}</span> Years
+                of Experience
               </span>
             </motion.div>
 
@@ -82,7 +83,7 @@ export function Hero() {
             >
               <a
                 href="#work"
-                className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-canvas transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_30px_-8px_rgba(37,99,235,0.45)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-fg transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_30px_-8px_rgba(62,107,156,0.55)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 View Selected Work
                 <ArrowRight

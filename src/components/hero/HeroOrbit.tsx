@@ -41,7 +41,10 @@ export function HeroOrbit() {
               src="/images/sajid-ali-portrait.jpg"
               alt={`${profile.name}, ${profile.role}`}
               fill
-              sizes="70vw"
+              // Matches the rendered box exactly: min(70vw, 280px), and 0px
+              // once this variant is hidden at the sm breakpoint (>=640px) —
+              // audited against actual rendered size to avoid over-fetching.
+              sizes="(min-width: 640px) 0px, (min-width: 400px) 280px, 70vw"
               className="object-cover"
               priority
             />
@@ -88,13 +91,17 @@ export function HeroOrbit() {
               src="/images/sajid-ali-portrait.jpg"
               alt={`${profile.name}, ${profile.role}`}
               fill
-              sizes="(min-width: 1024px) 320px, (min-width: 640px) 280px, 200px"
+              // Audited against actual rendered size: the portrait is 62% of
+              // the sm/md/lg orbit container (w-[340px]/[400px]/[440px]),
+              // i.e. ~211/248/273px — not the container width itself. 0px
+              // below sm since this variant is hidden there.
+              sizes="(min-width: 1024px) 273px, (min-width: 768px) 248px, (min-width: 640px) 211px, 0px"
               className="object-cover"
               priority
             />
             <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-black/5" />
           </div>
-          <div className="pointer-events-none absolute -inset-[6%] rounded-full border border-accent/20 transition-all duration-500 peer-hover:border-accent/50 peer-hover:shadow-[0_0_40px_-8px_rgba(37,99,235,0.35)]" />
+          <div className="pointer-events-none absolute -inset-[6%] rounded-full border border-accent/20 transition-all duration-500 peer-hover:border-accent/50 peer-hover:shadow-[0_0_40px_-8px_rgba(62,107,156,0.4)]" />
         </div>
 
         {/* orbit track */}

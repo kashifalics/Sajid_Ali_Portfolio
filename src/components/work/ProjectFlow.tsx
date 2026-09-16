@@ -1,4 +1,24 @@
-import { ChevronDown } from "lucide-react";
+function FlowConnector() {
+  return (
+    <svg
+      viewBox="0 0 24 32"
+      width="24"
+      height="32"
+      className="text-accent"
+      aria-hidden="true"
+    >
+      <line
+        x1="12"
+        y1="0"
+        x2="12"
+        y2="21"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+      <path d="M5 19 L12 29 L19 19 Z" fill="currentColor" />
+    </svg>
+  );
+}
 
 export function ProjectFlow({ steps }: { steps: string[] }) {
   return (
@@ -14,11 +34,7 @@ export function ProjectFlow({ steps }: { steps: string[] }) {
             </div>
             {i < steps.length - 1 ? (
               <div className="flex justify-center py-1">
-                <ChevronDown
-                  size={14}
-                  className="text-fg-faint"
-                  aria-hidden="true"
-                />
+                <FlowConnector />
               </div>
             ) : null}
           </li>

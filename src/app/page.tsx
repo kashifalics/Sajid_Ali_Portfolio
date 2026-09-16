@@ -5,6 +5,7 @@ import { CredibilityStrip } from "@/components/credibility/CredibilityStrip";
 import { TechMarquee } from "@/components/credibility/TechMarquee";
 import { Work } from "@/components/work/Work";
 import { Experience } from "@/components/experience/Experience";
+import { Testimonials } from "@/components/testimonials/Testimonials";
 import { Capabilities } from "@/components/capabilities/Capabilities";
 import { About } from "@/components/about/About";
 import { Contact } from "@/components/contact/Contact";
@@ -21,6 +22,7 @@ export default function Home() {
         <TechMarquee />
         <Work />
         <Experience />
+        <Testimonials />
         <Capabilities />
         <About />
         <Contact />
