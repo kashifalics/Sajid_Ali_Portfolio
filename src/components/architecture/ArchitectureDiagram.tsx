@@ -14,6 +14,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
 
 const layers: { label: string; icon: LucideIcon }[] = [
@@ -35,73 +36,67 @@ const surroundingConcepts: { label: string; icon: LucideIcon }[] = [
 
 export function ArchitectureDiagram() {
   return (
-    <section
-      id="architecture"
-      className="relative z-10 scroll-mt-28 bg-navy py-20 md:py-28"
-    >
+    <section className="relative z-10 py-20 md:py-28">
       <Container>
-        <Reveal className="max-w-2xl">
-          <span className="inline-flex items-center rounded-full border border-[rgba(148,163,184,0.25)] bg-[rgba(148,163,184,0.08)] px-3.5 py-1.5 text-xs font-semibold tracking-[0.14em] text-navy-fg-muted uppercase">
-            Architecture
-          </span>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-balance text-navy-fg sm:text-4xl">
-            Architecture at a Glance
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-navy-fg-muted">
-            A simplified view of how enterprise systems are typically
-            structured — from the business layer down to data, with cloud,
-            identity, integration and operational concerns running alongside.
-          </p>
-        </Reveal>
+        <SectionHeading
+          eyebrow="Architecture"
+          title="Architecture at a Glance"
+          description="A simplified view of how enterprise systems are typically structured — from the business layer down to data, with cloud, identity, integration and operational concerns running alongside."
+        />
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
-          <StaggerGroup className="mx-auto flex w-full max-w-sm flex-col items-stretch">
-            {layers.map((layer, i) => (
-              <StaggerItem key={layer.label}>
-                <div className="flex items-center gap-3 rounded-lg border border-[rgba(148,163,184,0.18)] bg-navy-surface px-5 py-3.5">
-                  <layer.icon
-                    size={17}
-                    className="shrink-0 text-accent-2"
-                    aria-hidden="true"
-                  />
-                  <span className="text-sm font-medium text-navy-fg">
-                    {layer.label}
-                  </span>
-                </div>
-                {i < layers.length - 1 ? (
-                  <div className="flex justify-center py-1.5">
-                    <ChevronDown
-                      size={16}
-                      className="text-navy-fg-muted"
+        <Reveal
+          delay={0.1}
+          className="mt-12 rounded-3xl border border-hairline bg-raised px-6 py-10 sm:px-10 sm:py-12 md:py-14"
+        >
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+            <StaggerGroup className="mx-auto flex w-full max-w-sm flex-col items-stretch">
+              {layers.map((layer, i) => (
+                <StaggerItem key={layer.label}>
+                  <div className="flex items-center gap-3 rounded-lg border border-hairline bg-surface px-5 py-3.5">
+                    <layer.icon
+                      size={17}
+                      className="shrink-0 text-accent"
                       aria-hidden="true"
                     />
+                    <span className="text-sm font-medium text-fg">
+                      {layer.label}
+                    </span>
                   </div>
-                ) : null}
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-
-          <Reveal delay={0.1}>
-            <p className="text-xs font-semibold tracking-[0.14em] text-navy-fg-muted uppercase">
-              Secondary Systems
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-2.5">
-              {surroundingConcepts.map((concept) => (
-                <li
-                  key={concept.label}
-                  className="flex items-center gap-2 rounded-full border border-[rgba(148,163,184,0.18)] px-3.5 py-2 text-sm text-navy-fg-muted"
-                >
-                  <concept.icon
-                    size={14}
-                    className="shrink-0 text-accent-2"
-                    aria-hidden="true"
-                  />
-                  {concept.label}
-                </li>
+                  {i < layers.length - 1 ? (
+                    <div className="flex justify-center py-1.5">
+                      <ChevronDown
+                        size={16}
+                        className="text-fg-faint"
+                        aria-hidden="true"
+                      />
+                    </div>
+                  ) : null}
+                </StaggerItem>
               ))}
-            </ul>
-          </Reveal>
-        </div>
+            </StaggerGroup>
+
+            <div>
+              <p className="text-xs font-semibold tracking-[0.14em] text-fg-faint uppercase">
+                Secondary Systems
+              </p>
+              <ul className="mt-4 flex flex-wrap gap-2.5">
+                {surroundingConcepts.map((concept) => (
+                  <li
+                    key={concept.label}
+                    className="flex items-center gap-2 rounded-full border border-hairline bg-surface px-3.5 py-2 text-sm text-fg-muted"
+                  >
+                    <concept.icon
+                      size={14}
+                      className="shrink-0 text-accent"
+                      aria-hidden="true"
+                    />
+                    {concept.label}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Reveal>
       </Container>
     </section>
   );
