@@ -158,11 +158,11 @@ body {
   color: var(--accent);
 }
 
-/* ---------- orbit system ---------- */
-
-.orbit-track {
-  animation: orbit-rotate var(--orbit-duration, 25s) linear infinite;
-}
+/* ---------- fixed architectural label positions ----------
+   Static (non-animated) positioning around the hero portrait — see
+   HeroOrbit.tsx. Deliberately not animated: continuously-rotating labels
+   read as a generic AI-template flourish rather than an art-directed
+   composition. */
 
 .orbit-item {
   position: absolute;
@@ -175,31 +175,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  animation: orbit-counter-rotate var(--orbit-duration, 25s) linear infinite;
   transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle)));
-}
-
-.orbit-paused .orbit-track,
-.orbit-paused .orbit-item-content {
-  animation-play-state: paused;
-}
-
-@keyframes orbit-rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes orbit-counter-rotate {
-  from {
-    transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle)));
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle) - 360deg));
-  }
 }
 
 @keyframes bg-fade-in {
@@ -220,16 +196,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .orbit-track {
-    animation: none !important;
-    transform: none !important;
-  }
-
-  .orbit-item-content {
-    animation: none !important;
-    transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle))) !important;
   }
 
   *,

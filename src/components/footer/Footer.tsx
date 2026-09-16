@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
 import { profile, whatsappHref } from "@/data/profile";
 import { navLinks } from "@/data/content";
@@ -11,12 +12,12 @@ export function Footer() {
     <footer className="relative z-10 border-t border-hairline bg-raised">
       <Container className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1fr] lg:gap-8">
         <div className="max-w-xs">
-          <a href="#home" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-hairline-strong bg-surface text-sm font-semibold text-accent">
               SA
             </span>
             <span className="text-sm font-medium text-fg">{profile.name}</span>
-          </a>
+          </Link>
           <p className="mt-4 text-sm leading-relaxed text-fg-muted">
             {profile.role}.
           </p>
@@ -58,12 +59,12 @@ export function Footer() {
           <ul className="mt-5 flex flex-col gap-2.5">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="text-sm text-fg-muted transition-colors hover:text-accent"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

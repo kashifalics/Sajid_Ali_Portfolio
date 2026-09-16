@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
 import { profile, whatsappHref } from "@/data/profile";
@@ -32,7 +33,7 @@ export function Hero() {
   };
 
   return (
-    <section id="home" className="relative z-10 scroll-mt-28 pt-32 pb-16 md:pb-20">
+    <section className="relative z-10 pt-32 pb-16 md:pb-20">
       <Container>
         <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
           <motion.div
@@ -80,16 +81,16 @@ export function Hero() {
               variants={itemVariants}
               className="mt-10 flex flex-wrap items-center gap-4"
             >
-              <a
-                href="#work"
+              <Link
+                href="/work"
                 className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-4px_rgba(37,99,235,0.35)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
-                View Selected Work
+                View Enterprise Work
                 <ArrowRight
                   size={16}
                   className="transition-transform group-hover:translate-x-0.5"
                 />
-              </a>
+              </Link>
               <a
                 href={profile.linkedin}
                 target="_blank"

@@ -7,7 +7,10 @@ export function HowIWork() {
   return (
     <section id="how-i-work" className="relative z-10 scroll-mt-28 py-20 md:py-28">
       <Container>
-        <SectionHeading eyebrow="How I Work" title="From requirements to production" />
+        <SectionHeading
+          eyebrow="How I Approach Systems"
+          title="From requirements to production"
+        />
 
         <StaggerGroup className="mt-12 grid gap-x-8 gap-y-10 border-t border-hairline pt-10 sm:grid-cols-2 lg:grid-cols-4">
           {howIWork.map((stage) => (

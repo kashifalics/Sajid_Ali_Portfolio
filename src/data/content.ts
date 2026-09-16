@@ -54,10 +54,10 @@ export const languages = [
 ];
 
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Work", href: "#work" },
-  { label: "Experience", href: "#experience" },
-  { label: "Capabilities", href: "#capabilities" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Work", href: "/work" },
+  { label: "Experience", href: "/experience" },
+  { label: "Capabilities", href: "/capabilities" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];

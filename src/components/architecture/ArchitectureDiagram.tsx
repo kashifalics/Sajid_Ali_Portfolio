@@ -1,38 +1,36 @@
 import {
   Users,
   AppWindow,
-  Network,
   Boxes,
+  Network,
   Database,
   ChevronDown,
-  Cloud,
   Fingerprint,
-  Landmark,
-  Layers,
+  Shield,
+  Cloud,
   GitBranch,
   Activity,
-  Shield,
+  Landmark,
   type LucideIcon,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
 
 const layers: { label: string; icon: LucideIcon }[] = [
-  { label: "User / Business Layer", icon: Users },
-  { label: "Application Layer", icon: AppWindow },
-  { label: "API / Integration Layer", icon: Network },
+  { label: "User / Business", icon: Users },
+  { label: "Application", icon: AppWindow },
   { label: "Services / Microservices", icon: Boxes },
-  { label: "Data Layer", icon: Database },
+  { label: "API / Integration", icon: Network },
+  { label: "Data", icon: Database },
 ];
 
 const surroundingConcepts: { label: string; icon: LucideIcon }[] = [
-  { label: "Cloud", icon: Cloud },
   { label: "Identity", icon: Fingerprint },
-  { label: "External Government Systems", icon: Landmark },
-  { label: "Enterprise Applications", icon: Layers },
-  { label: "CI/CD", icon: GitBranch },
-  { label: "Monitoring", icon: Activity },
   { label: "Security", icon: Shield },
+  { label: "Cloud", icon: Cloud },
+  { label: "DevOps", icon: GitBranch },
+  { label: "Monitoring", icon: Activity },
+  { label: "External Systems", icon: Landmark },
 ];
 
 export function ArchitectureDiagram() {
@@ -85,7 +83,7 @@ export function ArchitectureDiagram() {
 
           <Reveal delay={0.1}>
             <p className="text-xs font-semibold tracking-[0.14em] text-navy-fg-muted uppercase">
-              Surrounding Capabilities
+              Secondary Systems
             </p>
             <ul className="mt-4 flex flex-wrap gap-2.5">
               {surroundingConcepts.map((concept) => (

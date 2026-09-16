@@ -1,21 +1,13 @@
 import { Calendar, MapPin } from "lucide-react";
 import { experience } from "@/data/experience";
-import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
 
 export function Experience() {
   const [current, ...rest] = experience;
 
   return (
-    <section id="experience" className="relative z-10 scroll-mt-28 py-20 md:py-28">
-      <Container>
-        <SectionHeading
-          eyebrow="Experience"
-          title="Sixteen years of increasing scope and responsibility"
-        />
-
-        <Reveal className="mt-12">
+    <>
+      <Reveal>
           <div className="rounded-2xl border border-hairline-strong bg-accent-3 p-7 sm:p-10">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
               <h3 className="text-xl font-semibold text-fg sm:text-2xl">
@@ -95,8 +87,7 @@ export function Experience() {
               </div>
             </StaggerItem>
           ))}
-        </StaggerGroup>
-      </Container>
-    </section>
+      </StaggerGroup>
+    </>
   );
 }

@@ -1,40 +1,29 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/data/content";
 import { profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 import { LinkedInIcon } from "@/components/ui/icons";
 
+function isLinkActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function Navigation() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
   const headerRef = useRef<HTMLElement>(null);
-  const sectionIds = useMemo(() => navLinks.map((link) => link.href.slice(1)), []);
-  const [activeId, setActiveId] = useState(sectionIds[0] ?? "home");
 
-  useEffect(() => {
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null);
-
-    if (sections.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) {
-          setActiveId(visible[0].target.id);
-        }
-      },
-      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, [sectionIds]);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setOpen(false);
+  }
 
   useEffect(() => {
     if (open) {
@@ -76,9 +65,8 @@ export function Navigation() {
           className="flex h-16 items-center justify-between rounded-[20px] border border-hairline bg-surface/90 px-5 shadow-[0_10px_30px_-15px_rgba(11,18,32,0.12)] backdrop-blur-md sm:px-7"
           aria-label="Primary"
         >
-          <a
-            href="#home"
-            onClick={() => setActiveId("home")}
+          <Link
+            href="/"
             className="flex items-center gap-3 rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-hairline-strong bg-surface text-sm font-semibold tracking-wide text-accent">
@@ -87,17 +75,15 @@ export function Navigation() {
             <span className="hidden text-sm font-medium tracking-wide text-fg sm:inline">
               Sajid Ali
             </span>
-          </a>
+          </Link>
 
           <ul className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => {
-              const id = link.href.slice(1);
-              const isActive = activeId === id;
+              const isActive = isLinkActive(pathname, link.href);
               return (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
-                    onClick={() => setActiveId(id)}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
                       "relative block rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent",
@@ -107,7 +93,7 @@ export function Navigation() {
                     )}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               );
             })}
@@ -120,7 +106,7 @@ export function Navigation() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={linkedInAriaLabel}
-              className="inline-flex items-center gap-2 rounded-full border border-hairline-strong bg-surface px-4 py-2 text-sm font-medium text-fg transition-colors hover:border-accent hover:bg-accent hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+              className="inline-flex items-center gap-2 rounded-full border border-hairline-strong bg-surface px-4 py-2 text-sm font-medium text-fg transition-colors hover:border-accent hover:bg-accent hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
             >
               <LinkedInIcon className="h-[18px] w-[18px]" />
               LinkedIn
@@ -146,16 +132,11 @@ export function Navigation() {
           >
             <ul className="flex flex-col gap-1">
               {navLinks.map((link) => {
-                const id = link.href.slice(1);
-                const isActive = activeId === id;
+                const isActive = isLinkActive(pathname, link.href);
                 return (
                   <li key={link.href}>
-                    <a
+                    <Link
                       href={link.href}
-                      onClick={() => {
-                        setActiveId(id);
-                        setOpen(false);
-                      }}
                       aria-current={isActive ? "page" : undefined}
                       className={cn(
                         "block rounded-lg px-3 py-3 text-base transition-colors",
@@ -165,7 +146,7 @@ export function Navigation() {
                       )}
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 );
               })}
@@ -175,8 +156,7 @@ export function Navigation() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={linkedInAriaLabel}
-              onClick={() => setOpen(false)}
-              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-hairline-strong bg-surface px-5 py-3 text-sm font-medium text-fg transition-all hover:border-accent hover:bg-accent hover:text-fg"
+              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-hairline-strong bg-surface px-5 py-3 text-sm font-medium text-fg transition-colors hover:border-accent hover:bg-accent hover:text-white"
             >
               <LinkedInIcon className="h-[18px] w-[18px]" />
               LinkedIn

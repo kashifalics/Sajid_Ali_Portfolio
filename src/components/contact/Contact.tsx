@@ -35,12 +35,20 @@ const methods = [
 
 export function Contact() {
   return (
-    <section id="contact" className="relative z-10 scroll-mt-28 py-20 md:py-28">
+    <section className="relative z-10 overflow-hidden py-20 md:py-28">
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 select-none text-center font-bold whitespace-nowrap text-fg opacity-[0.035]"
+        style={{ fontSize: "clamp(6rem, 22vw, 16rem)", lineHeight: 1 }}
+      >
+        SAJID
+      </span>
+
       <Container>
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="section-label">Contact</span>
           <h2 className="mt-6 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-            Let&apos;s Talk Technology
+            Let&apos;s Talk Technology.
           </h2>
           <p className="text-body mt-5">
             For enterprise systems, architecture, technical leadership or
@@ -61,7 +69,7 @@ export function Contact() {
                   href={method.href}
                   target={method.external ? "_blank" : undefined}
                   rel={method.external ? "noopener noreferrer" : undefined}
-                  className="card-hover group flex flex-col items-center gap-3 rounded-2xl border border-hairline px-6 py-6 transition-colors hover:border-accent/40"
+                  className="card-hover group flex flex-col items-center gap-3 rounded-2xl border border-hairline bg-surface px-6 py-6 transition-colors hover:border-accent/40"
                 >
                   <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent-3 text-accent transition-colors group-hover:bg-accent group-hover:text-white">
                     <Icon size={18} aria-hidden="true" />

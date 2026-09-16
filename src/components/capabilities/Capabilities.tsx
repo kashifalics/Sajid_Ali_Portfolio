@@ -1,29 +1,25 @@
 import { capabilityGroups } from "@/data/capabilities";
-import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
+import { EditorialNumber } from "@/components/ui/EditorialNumber";
 
 export function Capabilities() {
   return (
-    <section id="capabilities" className="relative z-10 scroll-mt-28 py-20 md:py-28">
-      <Container>
-        <SectionHeading
-          eyebrow="Capabilities"
-          title="Technical Capabilities"
-          description="Architecture, engineering, integration and delivery capabilities built across sixteen years of enterprise work."
-        />
-
-        <StaggerGroup className="mt-12 grid gap-x-10 gap-y-10 border-t border-hairline pt-10 sm:grid-cols-2 lg:grid-cols-3">
-          {capabilityGroups.map((group) => (
-            <StaggerItem key={group.label}>
-              <h3 className="text-sm font-semibold tracking-wide text-fg">
-                {group.label}
-              </h3>
-              <p className="text-body-sm mt-3">{group.items.join(" · ")}</p>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      </Container>
-    </section>
+    <StaggerGroup className="grid gap-x-10 gap-y-10 border-t border-hairline pt-10 sm:grid-cols-2 lg:grid-cols-4">
+      {capabilityGroups.map((group) => (
+        <StaggerItem key={group.label}>
+          <EditorialNumber value={group.index} className="text-xs" />
+          <h3 className="mt-3 text-sm font-semibold tracking-wide text-fg">
+            {group.label}
+          </h3>
+          <ul className="mt-4 flex flex-col gap-1.5">
+            {group.items.map((item) => (
+              <li key={item} className="text-sm text-fg-muted">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </StaggerItem>
+      ))}
+    </StaggerGroup>
   );
 }

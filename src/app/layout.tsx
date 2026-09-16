@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { profile } from "@/data/profile";
+import { SiteBackground } from "@/components/background/SiteBackground";
+import { Navigation } from "@/components/navigation/Navigation";
+import { Footer } from "@/components/footer/Footer";
+import { PageTransition } from "@/components/ui/PageTransition";
 
 const siteUrl = "https://sajidali.dev";
 const title = "Sajid Ali — Solutions Architect & Enterprise Full-Stack Engineer";
@@ -97,7 +101,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
+        <SiteBackground />
+        <Navigation />
+        <main className="relative z-10">
+          <PageTransition>{children}</PageTransition>
+        </main>
+        <Footer />
       </body>
     </html>
   );

@@ -1,43 +1,48 @@
 export type CapabilityGroup = {
+  index: string;
   label: string;
   items: string[];
 };
 
 export const capabilityGroups: CapabilityGroup[] = [
   {
-    label: "Architecture",
-    items: [
-      "Solution Architecture",
-      "Enterprise Architecture",
-      "Application Architecture",
-      "Domain-Driven Design",
-      "Microservices",
-    ],
+    index: "01",
+    label: "Solutions Architecture",
+    items: ["Solutions Architecture", "Enterprise Architecture", "Domain-Driven Design", "API-First Design"],
   },
   {
-    label: "Engineering",
-    items: ["C#", ".NET / .NET Core", "ASP.NET", "Web API", "REST", "JavaScript", "SQL"],
+    index: "02",
+    label: "Enterprise Engineering",
+    items: ["C#", "VB.NET", ".NET Core", "ASP.NET", "MVC"],
   },
   {
-    label: "Integration",
-    items: [
-      "API Gateways",
-      "Enterprise Integration",
-      "REST / SOAP",
-      "Government Integrations",
-      "Mobile APIs",
-    ],
+    index: "03",
+    label: "Full-Stack Development",
+    items: ["JavaScript", "HTML / CSS", "Razor", "Vue.js", "Blazor"],
   },
   {
+    index: "04",
+    label: "Microservices & APIs",
+    items: ["Microservices", "Web API", "REST", "SOAP", "Swagger"],
+  },
+  {
+    index: "05",
     label: "Cloud & DevOps",
-    items: ["Azure", "Kubernetes", "Docker", "CI/CD", "DevOps"],
+    items: ["Azure", "Docker", "Kubernetes", "DevOps", "CI/CD"],
   },
   {
-    label: "Data",
-    items: ["SQL Server", "Entity Framework", "Database Architecture", "Reporting / Analytics"],
+    index: "06",
+    label: "Database & Data Systems",
+    items: ["SQL Server", "Entity Framework", "Database Design", "Reporting"],
   },
   {
-    label: "Delivery",
-    items: ["Agile", "Scrum", "Team Leadership", "Requirements Engineering", "SDLC"],
+    index: "07",
+    label: "Enterprise Integration",
+    items: ["Enterprise Integration", "API Integrations", "Government Integrations", "Third-Party Integrations"],
+  },
+  {
+    index: "08",
+    label: "Agile / Delivery",
+    items: ["Agile", "Scrum", "Requirements Engineering", "Team Leadership", "SDLC"],
   },
 ];
