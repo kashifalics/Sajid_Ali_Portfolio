@@ -100,10 +100,10 @@ export function Navigation() {
                     onClick={() => setActiveId(id)}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "relative block rounded-full px-3.5 py-1.5 text-sm transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent",
+                      "relative block rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent",
                       isActive
-                        ? "bg-accent-3 font-medium text-accent after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-5 after:-translate-x-1/2 after:rounded-full after:bg-gold after:shadow-[0_0_6px_rgba(201,169,97,0.6)] after:content-['']"
-                        : "text-fg-muted hover:bg-surface-2 hover:text-fg hover:shadow-[0_0_12px_rgba(62,107,156,0.25)]"
+                        ? "bg-accent-3 font-medium text-accent after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-5 after:-translate-x-1/2 after:rounded-full after:bg-gold after:content-['']"
+                        : "text-fg-muted hover:bg-surface-2 hover:text-fg"
                     )}
                   >
                     {link.label}
@@ -120,7 +120,7 @@ export function Navigation() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={linkedInAriaLabel}
-              className="inline-flex items-center gap-2 rounded-full border border-hairline-strong bg-surface px-4 py-2 text-sm font-medium text-fg transition-all hover:border-accent hover:bg-accent hover:text-fg hover:shadow-[0_4px_16px_rgba(62,107,156,0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+              className="inline-flex items-center gap-2 rounded-full border border-hairline-strong bg-surface px-4 py-2 text-sm font-medium text-fg transition-colors hover:border-accent hover:bg-accent hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
             >
               <LinkedInIcon className="h-[18px] w-[18px]" />
               LinkedIn

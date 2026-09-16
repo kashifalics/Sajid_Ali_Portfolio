@@ -101,7 +101,7 @@ export function HeroOrbit() {
             />
             <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-black/5" />
           </div>
-          <div className="pointer-events-none absolute -inset-[6%] rounded-full border border-accent/20 transition-all duration-500 peer-hover:border-accent/50 peer-hover:shadow-[0_0_40px_-8px_rgba(62,107,156,0.4)]" />
+          <div className="pointer-events-none absolute -inset-[6%] rounded-full border border-accent/20 transition-colors duration-500 peer-hover:border-accent/50" />
         </div>
 
         {/* orbit track */}
@@ -135,7 +135,7 @@ export function HeroOrbit() {
                     onMouseLeave={() => setPaused(false)}
                     onFocus={() => setPaused(true)}
                     onBlur={() => setPaused(false)}
-                    className="group flex items-center gap-1.5 whitespace-nowrap rounded-full border border-hairline bg-surface/90 px-2.5 py-1.5 text-[10px] font-medium text-fg-muted shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-accent/60 hover:text-accent focus-visible:scale-105 focus-visible:border-accent/60 focus-visible:text-accent focus-visible:outline-none sm:px-3 sm:text-xs"
+                    className="group flex items-center gap-1.5 whitespace-nowrap rounded-full border border-hairline bg-surface px-2.5 py-1.5 text-[10px] font-medium text-fg-muted shadow-sm transition-colors duration-200 hover:border-accent/60 hover:text-accent focus-visible:border-accent/60 focus-visible:text-accent focus-visible:outline-none sm:px-3 sm:text-xs"
                   >
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent/50 transition-colors group-hover:bg-accent" />
                     {label}

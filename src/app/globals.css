@@ -138,22 +138,6 @@ body {
   );
 }
 
-.bg-glow-a {
-  background: radial-gradient(
-    circle,
-    rgba(62, 107, 156, 0.07) 0%,
-    rgba(62, 107, 156, 0) 70%
-  );
-}
-
-.bg-glow-b {
-  background: radial-gradient(
-    circle,
-    rgba(30, 41, 59, 0.35) 0%,
-    rgba(30, 41, 59, 0) 70%
-  );
-}
-
 /* ---------- section rhythm ---------- */
 
 .section-label {
@@ -241,29 +225,6 @@ body {
   }
   to {
     transform: translateX(-50%);
-  }
-}
-
-/* ---------- architecture flow line ---------- */
-
-.flow-line {
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(62, 107, 156, 0.9) 15%,
-    rgba(62, 107, 156, 0.12) 40%,
-    transparent 55%
-  );
-  background-size: 100% 260%;
-  animation: flow-down 5s linear infinite;
-}
-
-@keyframes flow-down {
-  from {
-    background-position: 0 -160%;
-  }
-  to {
-    background-position: 0 100%;
   }
 }
 

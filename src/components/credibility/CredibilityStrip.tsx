@@ -6,7 +6,7 @@ export function CredibilityStrip() {
   return (
     <section
       aria-label="Credibility highlights"
-      className="relative z-10 border-y border-hairline bg-raised/60 backdrop-blur-sm"
+      className="relative z-10 border-y border-hairline bg-raised"
     >
       <Container>
         <Reveal>

@@ -80,7 +80,7 @@ export function Hero() {
             >
               <a
                 href="#work"
-                className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-fg transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_30px_-8px_rgba(62,107,156,0.55)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-fg transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.5)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 View Selected Work
                 <ArrowRight
