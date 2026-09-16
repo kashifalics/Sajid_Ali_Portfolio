@@ -128,8 +128,8 @@ export function NetworkCanvas() {
             const alpha = (1 - dist / MAX_DIST) * 0.16;
             const isAccent = a.light || b.light;
             ctx.strokeStyle = isAccent
-              ? `rgba(62, 107, 156, ${alpha * 1.4})`
-              : `rgba(154, 163, 178, ${alpha})`;
+              ? `rgba(37, 99, 235, ${alpha * 1.4})`
+              : `rgba(100, 116, 139, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x + offsetX, a.y + offsetY);
@@ -148,8 +148,8 @@ export function NetworkCanvas() {
 
         if (n.light) {
           const glow = ctx.createRadialGradient(x, y, 0, x, y, 14);
-          glow.addColorStop(0, `rgba(62, 107, 156, ${0.22 * twinkle})`);
-          glow.addColorStop(1, "rgba(62, 107, 156, 0)");
+          glow.addColorStop(0, `rgba(37, 99, 235, ${0.16 * twinkle})`);
+          glow.addColorStop(1, "rgba(37, 99, 235, 0)");
           ctx.fillStyle = glow;
           ctx.beginPath();
           ctx.arc(x, y, 14, 0, Math.PI * 2);
@@ -157,8 +157,8 @@ export function NetworkCanvas() {
         }
 
         ctx.fillStyle = n.light
-          ? `rgba(62, 107, 156, ${0.7 * twinkle})`
-          : `rgba(154, 163, 178, ${0.45 * twinkle})`;
+          ? `rgba(37, 99, 235, ${0.55 * twinkle})`
+          : `rgba(100, 116, 139, ${0.4 * twinkle})`;
         ctx.beginPath();
         ctx.arc(x, y, n.r, 0, Math.PI * 2);
         ctx.fill();

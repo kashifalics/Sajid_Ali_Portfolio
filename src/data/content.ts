@@ -1,29 +1,29 @@
 export type WorkStage = {
   index: string;
   title: string;
-  items: string[];
+  description: string;
 };
 
 export const howIWork: WorkStage[] = [
   {
     index: "01",
     title: "Understand",
-    items: ["Requirements", "Business context", "Constraints"],
+    description: "Requirements, business processes and constraints.",
   },
   {
     index: "02",
     title: "Architect",
-    items: ["System design", "Domain modelling", "Integration", "Security"],
+    description: "System boundaries, data, APIs, integrations and workflows.",
   },
   {
     index: "03",
     title: "Build",
-    items: ["Engineering", "APIs", "Applications", "Data"],
+    description: "Production-ready engineering across the full development lifecycle.",
   },
   {
     index: "04",
     title: "Deliver",
-    items: ["CI/CD", "Testing", "Deployment", "Continuous improvement"],
+    description: "Testing, CI/CD, deployment, iteration and operational reliability.",
   },
 ];
 

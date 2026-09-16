@@ -102,8 +102,8 @@ function HorizontalConnector() {
 function FlowNode({ step, index }: { step: string; index: number }) {
   const Icon = STEP_ICONS[step] ?? FileText;
   return (
-    <div className="relative flex-1 rounded-lg border border-hairline border-l-4 border-l-accent bg-[linear-gradient(135deg,#12161f,#181d28)] px-4 py-3">
-      <span className="absolute -top-2.5 -left-2.5 flex h-6 w-6 items-center justify-center rounded-full bg-gold text-[11px] font-bold text-canvas">
+    <div className="relative flex-1 rounded-lg border border-hairline border-l-4 border-l-accent bg-[linear-gradient(135deg,#ffffff,#f3f5f7)] px-4 py-3">
+      <span className="absolute -top-2.5 -left-2.5 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-[11px] font-bold text-white">
         {index + 1}
       </span>
       <div className="flex items-center gap-2 text-sm text-fg">

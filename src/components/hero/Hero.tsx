@@ -4,7 +4,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
 import { profile, whatsappHref } from "@/data/profile";
 import { Container } from "@/components/ui/Container";
-import { DynamicTitle } from "@/components/hero/DynamicTitle";
 import { HeroOrbit } from "@/components/hero/HeroOrbit";
 import { LinkedInIcon, WhatsAppIcon } from "@/components/ui/icons";
 
@@ -48,18 +47,21 @@ export function Hero() {
 
             <motion.h1
               variants={itemVariants}
-              className="mt-6 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl"
+              className="mt-6 text-4xl font-bold tracking-tight text-balance sm:text-5xl lg:text-6xl"
             >
-              <span className="text-fg-muted">Hi, I&apos;m</span>
-              <br />
-              <span className="text-fg">{profile.name}</span>
+              {profile.name}
             </motion.h1>
 
-            <motion.div variants={itemVariants} className="mt-4">
-              <DynamicTitle />
-            </motion.div>
+            <motion.p
+              variants={itemVariants}
+              className="mt-3 text-xl leading-snug font-medium text-accent sm:text-2xl"
+            >
+              Solutions Architect
+              <br />
+              &amp; Senior Full-Stack Engineer
+            </motion.p>
 
-            <motion.p variants={itemVariants} className="text-body mt-2 max-w-lg">
+            <motion.p variants={itemVariants} className="text-body mt-5 max-w-lg">
               {profile.summary}
             </motion.p>
 
@@ -69,7 +71,7 @@ export function Hero() {
             >
               <span className="h-px w-8 bg-accent/60" />
               <span className="text-xs font-semibold tracking-[0.2em] text-fg-faint uppercase">
-                <span className="text-gold">{profile.yearsExperience}</span> Years
+                <span className="text-fg">{profile.yearsExperience}</span> Years
                 of Experience
               </span>
             </motion.div>
@@ -80,7 +82,7 @@ export function Hero() {
             >
               <a
                 href="#work"
-                className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-fg transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.5)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-4px_rgba(37,99,235,0.35)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 View Selected Work
                 <ArrowRight
@@ -96,27 +98,24 @@ export function Hero() {
                 className="inline-flex items-center gap-2 rounded-full border border-hairline-strong px-6 py-3 text-sm font-semibold text-fg transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 <LinkedInIcon className="h-4 w-4" />
-                LinkedIn Profile
+                Connect on LinkedIn
               </a>
             </motion.div>
 
-            <motion.div
-              variants={itemVariants}
-              className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2"
-            >
+            <motion.div variants={itemVariants} className="mt-6">
               <a
                 href={`mailto:${profile.email}`}
-                className="flex items-center gap-2 text-sm text-fg-muted transition-colors hover:text-accent"
+                className="inline-flex items-center gap-2 text-sm text-fg-muted transition-colors hover:text-accent"
               >
                 <Mail size={15} aria-hidden="true" />
-                Email
+                Email Sajid
               </a>
               {whatsappHref ? (
                 <a
                   href={whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-fg-muted transition-colors hover:text-accent"
+                  className="ml-6 inline-flex items-center gap-2 text-sm text-fg-muted transition-colors hover:text-accent"
                 >
                   <WhatsAppIcon className="h-[15px] w-[15px]" />
                   WhatsApp

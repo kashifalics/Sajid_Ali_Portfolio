@@ -73,7 +73,7 @@ export function Navigation() {
     <header ref={headerRef} className="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
       <div className="mx-auto w-full max-w-[1240px]">
         <nav
-          className="flex h-16 items-center justify-between rounded-[20px] border border-hairline bg-surface/90 px-5 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.5)] backdrop-blur-md sm:px-7"
+          className="flex h-16 items-center justify-between rounded-[20px] border border-hairline bg-surface/90 px-5 shadow-[0_10px_30px_-15px_rgba(11,18,32,0.12)] backdrop-blur-md sm:px-7"
           aria-label="Primary"
         >
           <a
@@ -102,7 +102,7 @@ export function Navigation() {
                     className={cn(
                       "relative block rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent",
                       isActive
-                        ? "bg-accent-3 font-medium text-accent after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-5 after:-translate-x-1/2 after:rounded-full after:bg-gold after:content-['']"
+                        ? "bg-accent-3 font-medium text-accent after:absolute after:-bottom-1 after:left-1/2 after:h-[2px] after:w-5 after:-translate-x-1/2 after:rounded-full after:bg-accent after:content-['']"
                         : "text-fg-muted hover:bg-surface-2 hover:text-fg"
                     )}
                   >
@@ -142,7 +142,7 @@ export function Navigation() {
         {open ? (
           <div
             id="mobile-menu"
-            className="mt-2 rounded-[20px] border border-hairline bg-surface/95 px-4 pb-4 pt-2 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.5)] backdrop-blur-md lg:hidden"
+            className="mt-2 rounded-[20px] border border-hairline bg-surface/95 px-4 pb-4 pt-2 shadow-[0_10px_30px_-15px_rgba(11,18,32,0.12)] backdrop-blur-md lg:hidden"
           >
             <ul className="flex flex-col gap-1">
               {navLinks.map((link) => {

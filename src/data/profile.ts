@@ -1,17 +1,10 @@
 export const profile = {
   name: "Sajid Ali",
   firstName: "Sajid",
-  role: "Solutions Architect & Senior Full-Stack Developer",
+  role: "Solutions Architect & Senior Full-Stack Engineer",
   eyebrow: "SOLUTIONS ARCHITECT · ENTERPRISE TECHNOLOGY",
-  titles: [
-    "Solutions Architect",
-    "Senior Full-Stack Developer",
-    "Enterprise Technology Leader",
-    "Cloud & Integration Architect",
-    "Technical Lead",
-  ],
   summary:
-    "Designing and delivering scalable enterprise systems for complex, regulated environments across FinTech, insurance and government.",
+    "16+ years designing and delivering enterprise-grade systems across financial, insurance, government and other mission-critical environments.",
   yearsExperience: "16+",
   location: "Abu Dhabi, UAE",
   email: "sajid_ch1@yahoo.com",

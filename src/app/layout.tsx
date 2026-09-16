@@ -1,20 +1,12 @@
 import type { Metadata } from "next";
-import { Playfair_Display } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { profile } from "@/data/profile";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  display: "swap",
-});
-
 const siteUrl = "https://sajidali.dev";
-const title = "Sajid Ali | Solutions Architect & Senior Full-Stack Developer";
+const title = "Sajid Ali — Solutions Architect & Enterprise Full-Stack Engineer";
 const description =
-  "Sajid Ali is a Solutions Architect and Senior Full-Stack Developer with 16+ years of experience designing scalable enterprise systems, cloud solutions, APIs, microservices and mission-critical applications.";
+  "Solutions Architect with 16+ years of experience designing and delivering enterprise-grade systems across financial, insurance, government and mission-critical environments.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -98,7 +90,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${playfair.variable} h-full overflow-x-hidden`}
+      className={`${GeistSans.variable} h-full overflow-x-hidden`}
     >
       <body className="min-h-full overflow-x-hidden bg-canvas text-fg antialiased selection:bg-accent/20">
         <script

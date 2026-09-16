@@ -7,16 +7,9 @@ export type SystemProject = {
   capabilities: string[];
   flow: string[];
   tags: string[];
-  // OPEN QUESTION (see project checklist): no outcome metrics were provided
-  // for any case study. This placeholder must be replaced with real,
-  // confirmed figures before launch — never fabricate a number here.
-  impact: string;
 };
 
 const role = "Development & Team Leadership — Abu Dhabi Insurance Authority";
-
-const IMPACT_PLACEHOLDER =
-  "[Impact metric pending — confirm with Sajid: processing time reduced, entities integrated, or team size on this specific project]";
 
 export const systems: SystemProject[] = [
   {
@@ -25,7 +18,7 @@ export const systems: SystemProject[] = [
     category: "Insurance Authority · Field Operations Platform",
     role,
     description:
-      "System automating and transforming onsite insurance inspection processes, from planning through execution and feedback.",
+      "Automation and transformation of onsite insurance inspection processes, including inspection planning, execution plans, recommendations and feedback workflows.",
     capabilities: [
       "Yearly, quarterly and monthly inspection planning",
       "Predefined inspection criteria",
@@ -39,8 +32,7 @@ export const systems: SystemProject[] = [
       "Findings & Recommendations",
       "Reporting",
     ],
-    tags: ["Dynamic Workflows", "Enterprise Integration", "ASP.NET"],
-    impact: IMPACT_PLACEHOLDER,
+    tags: ["Insurance", "Workflow", "Enterprise System"],
   },
   {
     index: "02",
@@ -48,7 +40,7 @@ export const systems: SystemProject[] = [
     category: "Insurance Authority · Consumer Platform",
     role,
     description:
-      "Enterprise complaint and inquiry management platform replacing a legacy system, connecting insurance consumers with authority and insurer resolution workflows.",
+      "Enterprise complaint and inquiry management system supporting resolution, escalation, workflow processing and KPI/statistical reporting.",
     capabilities: [
       "Complaint submission & inquiry handling",
       "Resolution workflows",
@@ -62,8 +54,7 @@ export const systems: SystemProject[] = [
       "Committee Escalation",
       "KPI Reporting",
     ],
-    tags: ["Dynamic Workflows", "KPI Reporting", "ASP.NET", "SQL Server"],
-    impact: IMPACT_PLACEHOLDER,
+    tags: ["Insurance", "Workflow", "KPI"],
   },
   {
     index: "03",
@@ -71,7 +62,7 @@ export const systems: SystemProject[] = [
     category: "Insurance Authority · Governance Platform",
     role,
     description:
-      "Automated meeting lifecycle management covering the Board of Directors and internal organizational units, from scheduling through post-meeting follow-up.",
+      "End-to-end meeting lifecycle covering board and organizational meetings, agendas, invitations, pre-meeting preparation, minutes, recommendations, decisions and action plans.",
     capabilities: [
       "Board member, location & attendee management",
       "Meeting requests, agendas & invitations",
@@ -85,16 +76,15 @@ export const systems: SystemProject[] = [
       "Decisions & MOM",
       "Action Follow-Up",
     ],
-    tags: ["Workflow Automation", "Governance", "ASP.NET"],
-    impact: IMPACT_PLACEHOLDER,
+    tags: ["Enterprise", "Workflow", "Governance"],
   },
   {
     index: "04",
-    title: "Follow-Up & Enforcement System",
+    title: "Follow-up & Enforcement System",
     category: "Insurance Authority · Enterprise Workflow Platform",
     role,
     description:
-      "Enterprise system supporting the Follow-up and Enforcement department, built around a dynamic workflow architecture spanning multiple regulatory processes.",
+      "Processes supporting court decisions, penalties, company cancellation requests and appeal request management.",
     capabilities: [
       "Court decision execution",
       "Insurance company penalties",
@@ -108,8 +98,7 @@ export const systems: SystemProject[] = [
       "Appeal Review",
       "Enforcement Outcome",
     ],
-    tags: ["Dynamic Workflows", "Enterprise Integration", "ASP.NET", "SQL Server"],
-    impact: IMPACT_PLACEHOLDER,
+    tags: ["Regulatory", "Workflow", "Enterprise"],
   },
   {
     index: "05",
@@ -117,7 +106,7 @@ export const systems: SystemProject[] = [
     category: "Insurance Authority · Enterprise Platform",
     role,
     description:
-      "Enterprise insurance platform handling company licensing, renewals and modification requests through configurable, dynamic workflows.",
+      "Insurance company licensing, renewals, modification requests, service payments and penalty calculations.",
     capabilities: [
       "New insurance company licensing",
       "License renewals",
@@ -131,7 +120,6 @@ export const systems: SystemProject[] = [
       "Payment & Issuance",
       "Renewal Tracking",
     ],
-    tags: ["Dynamic Workflows", "ASP.NET", "SQL Server", "Payments"],
-    impact: IMPACT_PLACEHOLDER,
+    tags: ["Insurance", "Regulatory", "Enterprise"],
   },
 ];
