@@ -29,7 +29,7 @@ export function RegionRow() {
         {regions.map((region) => (
           <div
             key={region.country}
-            className="flex items-start gap-3 rounded-xl border border-hairline bg-surface p-4"
+            className="card-hover flex items-start gap-3 rounded-xl border border-hairline border-t-[rgba(62,107,156,0.15)] bg-surface p-4"
           >
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-3 text-accent">
               <MapPin size={15} aria-hidden="true" />

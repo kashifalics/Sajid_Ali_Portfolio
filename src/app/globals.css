@@ -4,11 +4,16 @@
   /* Enterprise-trust dark palette: near-black charcoal, muted steel blue,
      gold reserved for sparing premium accents (see .gold-accent usage). */
   --canvas: #0a0e14;
+  --canvas-alt: #0d1119;
   --raised: #10141c;
   --surface: #12161f;
   --surface-2: #181d28;
 
-  --fg: #e8eaed;
+  /* --fg-muted is reserved for true metadata (dates, tags, captions) —
+     actual body copy (paragraphs, bullets, quotes) must use --fg-body,
+     which is brighter/more legible. See .text-body below. */
+  --fg: #f0f2f5;
+  --fg-body: #c7cdd6;
   --fg-muted: #9aa3b2;
   --fg-faint: #6b7280;
 
@@ -27,11 +32,13 @@
 
 @theme inline {
   --color-canvas: var(--canvas);
+  --color-canvas-alt: var(--canvas-alt);
   --color-raised: var(--raised);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
 
   --color-fg: var(--fg);
+  --color-fg-body: var(--fg-body);
   --color-fg-muted: var(--fg-muted);
   --color-fg-faint: var(--fg-faint);
 
@@ -78,6 +85,30 @@ body {
 
 .text-balance {
   text-wrap: balance;
+}
+
+/* Body copy — paragraphs, bullet text, quotes. Brighter and roomier than
+   --fg-muted, which stays reserved for true metadata (dates/tags/captions).
+   Two tiers preserve intentional hierarchy (e.g. a highlighted current role
+   vs. a de-emphasized past one) while fixing contrast/line-height on both. */
+.text-body {
+  color: var(--fg-body);
+  font-size: 1.0625rem; /* 17px, one step above the 16px base */
+  line-height: 1.65;
+}
+
+.text-body-sm {
+  color: var(--fg-body);
+  font-size: 0.9375rem; /* 15px, up from the 13-14px it replaces */
+  line-height: 1.6;
+}
+
+.card-hover {
+  transition: box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .mask-fade-x {

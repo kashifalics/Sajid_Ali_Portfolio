@@ -6,7 +6,10 @@ import { RegionRow } from "@/components/about/RegionRow";
 
 export function About() {
   return (
-    <section id="about" className="relative z-10 scroll-mt-28 py-20 md:py-28">
+    <section
+      id="about"
+      className="relative z-10 scroll-mt-28 bg-canvas-alt py-20 md:py-28"
+    >
       <Container>
         {/* bio */}
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
@@ -17,7 +20,7 @@ export function About() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="text-base leading-relaxed text-fg-muted sm:text-lg">
+            <p className="text-body">
               Sajid Ali is a Solutions Architect and Senior Full-Stack
               Developer with 16+ years of experience across enterprise
               architecture and full-stack engineering. His work spans
@@ -47,7 +50,7 @@ export function About() {
                   <h3 className="mt-2 text-base font-semibold text-fg">
                     {stage.title}
                   </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">
+                  <p className="text-body-sm mt-1.5">
                     {stage.items.join(" · ")}
                   </p>
                 </div>
@@ -85,10 +88,7 @@ export function About() {
             <span className="section-label">Certifications</span>
             <ul className="mt-5 space-y-2.5">
               {certifications.map((cert) => (
-                <li
-                  key={cert.title}
-                  className="flex items-start gap-2.5 text-sm text-fg-muted"
-                >
+                <li key={cert.title} className="text-body-sm flex items-start gap-2.5">
                   <BadgeCheck
                     size={16}
                     className="mt-0.5 shrink-0 text-accent"

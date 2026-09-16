@@ -56,7 +56,7 @@ export function Capabilities() {
             const Icon = groupIcons[group.label] ?? Code2;
             return (
               <StaggerItem key={group.label}>
-                <div className="h-full rounded-2xl border border-hairline bg-surface p-6 transition-colors hover:border-accent/30">
+                <div className="card-hover h-full rounded-2xl border border-hairline border-t-[rgba(62,107,156,0.15)] bg-surface p-6 transition-colors hover:border-accent/30">
                   <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-3 text-accent">
                     <Icon size={20} aria-hidden="true" />
                   </span>

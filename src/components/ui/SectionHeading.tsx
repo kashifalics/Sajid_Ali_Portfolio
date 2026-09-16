@@ -27,9 +27,7 @@ export function SectionHeading({
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 text-base leading-relaxed text-fg-muted">
-          {description}
-        </p>
+        <p className="text-body mt-4">{description}</p>
       ) : null}
     </Reveal>
   );

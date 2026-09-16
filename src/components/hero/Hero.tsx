@@ -59,10 +59,7 @@ export function Hero() {
               <DynamicTitle />
             </motion.div>
 
-            <motion.p
-              variants={itemVariants}
-              className="mt-2 max-w-lg text-base leading-relaxed text-fg-muted sm:text-lg"
-            >
+            <motion.p variants={itemVariants} className="text-body mt-2 max-w-lg">
               {profile.summary}
             </motion.p>
 

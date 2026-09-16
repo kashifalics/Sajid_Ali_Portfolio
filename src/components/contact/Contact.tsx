@@ -93,7 +93,7 @@ export function Contact() {
           <h2 className="mt-6 font-serif text-3xl font-bold tracking-tight text-balance sm:text-4xl">
             Let&apos;s Talk Technology.
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-fg-muted sm:text-lg">
+          <p className="text-body mt-5">
             For enterprise engineering, architecture, technical leadership or
             technology collaboration, get in touch.
           </p>
@@ -102,7 +102,7 @@ export function Contact() {
         <Reveal className="mx-auto mt-12 max-w-xl">
           <form
             onSubmit={handleSubmit}
-            className="rounded-2xl border border-hairline bg-surface p-6 sm:p-8"
+            className="rounded-2xl border border-hairline border-t-[rgba(62,107,156,0.15)] bg-surface p-6 sm:p-8"
           >
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="flex flex-col gap-1.5">
@@ -226,7 +226,7 @@ export function Contact() {
                   href={method.href}
                   target={method.external ? "_blank" : undefined}
                   rel={method.external ? "noopener noreferrer" : undefined}
-                  className="group flex flex-col items-center gap-3 rounded-2xl border border-hairline bg-surface px-6 py-6 transition-all hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_16px_32px_-16px_rgba(62,107,156,0.35)]"
+                  className="card-hover group flex flex-col items-center gap-3 rounded-2xl border border-hairline border-t-[rgba(62,107,156,0.15)] bg-surface px-6 py-6 transition-all hover:-translate-y-1 hover:border-accent/40"
                 >
                   <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent-3 text-accent transition-colors group-hover:bg-accent group-hover:text-fg">
                     <Icon size={18} aria-hidden="true" />
