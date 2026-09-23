@@ -59,8 +59,8 @@ export function HeroPortrait() {
               alt={`${profile.name}, ${profile.role}`}
               fill
               sizes="(min-width: 1024px) 380px, (min-width: 640px) 340px, 300px"
-              style={{ objectPosition: "46% 38%" }}
-              className="scale-[1.85] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.9]"
+              style={{ objectPosition: "50% 42%" }}
+              className="scale-[1.32] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.37]"
               priority
             />
           </motion.div>
