@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function ContactCta() {
   return (
-    <section className="relative z-10 py-20 md:py-28">
+    <section id="contact" className="relative z-10 py-20 md:py-28">
       <Container>
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="section-label">Contact</span>

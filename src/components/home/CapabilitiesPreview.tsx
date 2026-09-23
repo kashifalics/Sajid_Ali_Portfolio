@@ -8,7 +8,7 @@ import { EditorialNumber } from "@/components/ui/EditorialNumber";
 
 export function CapabilitiesPreview() {
   return (
-    <section className="relative z-10 py-20 md:py-28">
+    <section id="capabilities" className="relative z-10 py-20 md:py-28">
       <Container>
         <SectionHeading
           eyebrow="Capabilities"

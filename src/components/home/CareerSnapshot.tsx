@@ -9,7 +9,7 @@ export function CareerSnapshot() {
   const [current] = experience;
 
   return (
-    <section className="relative z-10 py-20 md:py-28">
+    <section id="experience" className="relative z-10 py-20 md:py-28">
       <Container>
         <SectionHeading eyebrow="Experience" title="Sixteen years of increasing scope" />
 

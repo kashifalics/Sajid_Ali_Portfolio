@@ -1,5 +1,4 @@
 import { Hero } from "@/components/hero/Hero";
-import { CredibilityStrip } from "@/components/credibility/CredibilityStrip";
 import { TransitionStatement } from "@/components/home/TransitionStatement";
 import { WorkPreview } from "@/components/home/WorkPreview";
 import { ArchitectureDiagram } from "@/components/architecture/ArchitectureDiagram";
@@ -8,12 +7,13 @@ import { CapabilitiesPreview } from "@/components/home/CapabilitiesPreview";
 import { HowIWork } from "@/components/about/HowIWork";
 import { AboutSnapshot } from "@/components/home/AboutSnapshot";
 import { ContactCta } from "@/components/home/ContactCta";
+import { HomeSectionNav } from "@/components/home/HomeSectionNav";
 
 export default function Home() {
   return (
     <>
+      <HomeSectionNav />
       <Hero />
-      <CredibilityStrip />
       <TransitionStatement />
       <WorkPreview />
       <ArchitectureDiagram />

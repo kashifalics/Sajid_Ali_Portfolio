@@ -8,7 +8,7 @@ import { EditorialNumber } from "@/components/ui/EditorialNumber";
 
 export function WorkPreview() {
   return (
-    <section className="relative z-10 py-20 md:py-28">
+    <section id="work" className="relative z-10 py-20 md:py-28">
       <Container>
         <SectionHeading
           eyebrow="Work"
@@ -19,27 +19,55 @@ export function WorkPreview() {
         <div className="mt-10 border-t border-hairline">
           {systems.map((project) => (
             <Reveal key={project.slug}>
-              <Link
-                href={`/work/${project.slug}`}
-                className="group flex items-center justify-between gap-6 border-b border-hairline py-6 transition-colors hover:bg-surface-2"
-              >
-                <div className="flex items-baseline gap-5">
-                  <EditorialNumber value={project.index} className="text-sm" />
-                  <div>
-                    <h3 className="text-lg font-semibold text-fg sm:text-xl">
-                      {project.title}
-                    </h3>
-                    <p className="mt-0.5 text-xs tracking-wide text-fg-faint uppercase">
-                      {project.category}
-                    </p>
+              <div className="group border-b border-hairline">
+                <Link
+                  href={`/work/${project.slug}`}
+                  className="flex items-center justify-between gap-6 py-6 transition-colors group-hover:bg-surface-2"
+                >
+                  <div className="flex items-baseline gap-5">
+                    <EditorialNumber
+                      value={project.index}
+                      className="text-sm transition-colors group-hover:text-accent"
+                    />
+                    <div>
+                      <h3 className="text-lg font-semibold text-fg sm:text-xl">
+                        {project.title}
+                      </h3>
+                      <p className="mt-0.5 text-xs tracking-wide text-fg-faint uppercase">
+                        {project.category}
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowRight
+                    size={18}
+                    className="shrink-0 text-fg-faint transition-all group-hover:translate-x-1 group-hover:text-accent"
+                    aria-hidden="true"
+                  />
+                </Link>
+
+                {/* hover-reveal system flow preview — CSS-only height reveal,
+                    no layout shift for viewers who never hover it. */}
+                <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr]">
+                  <div className="overflow-hidden">
+                    <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2 pb-6 pl-0 sm:pl-[3.25rem]">
+                      {project.flow.map((step, i) => (
+                        <span key={step} className="flex items-center gap-1.5">
+                          <span className="rounded-full border border-hairline bg-surface px-2.5 py-1 text-[11px] font-medium text-fg-muted">
+                            {step}
+                          </span>
+                          {i < project.flow.length - 1 ? (
+                            <ArrowRight
+                              size={11}
+                              className="shrink-0 text-fg-faint"
+                              aria-hidden="true"
+                            />
+                          ) : null}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <ArrowRight
-                  size={18}
-                  className="shrink-0 text-fg-faint transition-all group-hover:translate-x-1 group-hover:text-accent"
-                  aria-hidden="true"
-                />
-              </Link>
+              </div>
             </Reveal>
           ))}
         </div>

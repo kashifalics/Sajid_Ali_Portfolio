@@ -26,11 +26,3 @@ export const profile = {
 export const whatsappHref = profile.whatsapp
   ? `https://wa.me/${profile.whatsapp}`
   : null;
-
-export const credibility = [
-  { label: "Years Experience", value: "16+" },
-  { label: "Mission-Critical Systems", value: "Enterprise" },
-  { label: "& Insurance", value: "FinTech" },
-  { label: "DevOps & Integration", value: "Cloud" },
-  { label: "Engineering", value: "Full-Stack" },
-] as const;
