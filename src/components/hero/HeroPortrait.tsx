@@ -4,73 +4,47 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { orbitExpertise } from "@/data/expertise";
 import { profile } from "@/data/profile";
-import { HeroArchitecture } from "@/components/hero/HeroArchitecture";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
-
-function CornerBracket({ className }: { className: string }) {
-  return <span aria-hidden="true" className={className} />;
-}
 
 export function HeroPortrait() {
   const shouldReduceMotion = useSafeReducedMotion();
 
   return (
-    <motion.div
-      initial={shouldReduceMotion ? false : { opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.4, delay: 0.15 }}
-      className="mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[380px]"
-    >
-      {/* top technical caption row — small annotations "around" the frame,
-          not badges: plain uppercase micro-type reading like a drawing label. */}
-      <div className="mb-3 flex items-baseline justify-between gap-3 text-[10.5px] font-medium tracking-wide text-fg-faint uppercase">
+    <div className="mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[420px]">
+      {/* top technical caption row */}
+      <div className="mb-4 flex items-baseline justify-between gap-3 text-[10.5px] font-medium tracking-wide text-fg-faint uppercase">
         <span>{profile.yearsExperience} Years · Enterprise Delivery</span>
         <span className="shrink-0">{profile.location}</span>
       </div>
 
-      <div className="relative">
-        {/* ambient system network — reaches into the open margin above and
-            right of the frame, but stops flush at the bottom edge so it
-            never drifts into the annotation baseline below. */}
-        <div className="pointer-events-none absolute -top-16 -right-16 bottom-0 -left-4 lg:-top-24 lg:-right-24 lg:-left-6">
-          <HeroArchitecture />
-        </div>
-
-        {/* offset architectural frame — drawn in behind the photo, shifted
-            down-right so its outline peeks past the photo's own edges. */}
-        <motion.div
+      {/* The portrait is already a complete, self-contained circular
+          composition (its own background + ring) — shown whole via
+          object-contain, no crop into the portrait itself. Note: the
+          source file has no alpha channel (flat opaque square behind the
+          ring), invisible against the dark theme's canvas but visible as
+          a hard rectangle in light mode — clipped to a circle so only the
+          flat, content-free corners are removed; face/ring/shoulders are
+          never touched. */}
+      <div className="relative mx-auto aspect-square w-[clamp(220px,34vw,420px)]">
+        <div
           aria-hidden="true"
-          initial={shouldReduceMotion ? false : { opacity: 0, x: 0, y: 0 }}
-          animate={{ opacity: 1, x: 12, y: 12 }}
-          transition={{ duration: 0.6, delay: shouldReduceMotion ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 border border-accent/30"
+          className="absolute inset-[-8%] rounded-full bg-accent/15 blur-3xl"
         />
-
-        {/* Rectangular editorial frame — deliberately not a circular avatar. */}
-        <div className="group relative aspect-[4/5] w-full overflow-hidden border border-hairline-strong bg-surface-2">
-          <motion.div
-            initial={shouldReduceMotion ? false : { clipPath: "inset(0 0 100% 0)" }}
-            animate={{ clipPath: "inset(0 0 0% 0)" }}
-            transition={{ duration: 0.75, delay: shouldReduceMotion ? 0 : 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-0"
-          >
-            <Image
-              src="/images/sajid-ali-portrait.jpg"
-              alt={`${profile.name}, ${profile.role}`}
-              fill
-              sizes="(min-width: 1024px) 380px, (min-width: 640px) 340px, 300px"
-              style={{ objectPosition: "50% 42%" }}
-              className="scale-[1.32] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.37]"
-              priority
-            />
-          </motion.div>
-
-          {/* corner brackets — technical/architectural framing, not decoration */}
-          <CornerBracket className="pointer-events-none absolute top-2.5 left-2.5 h-4 w-4 border-t-2 border-l-2 border-white/70" />
-          <CornerBracket className="pointer-events-none absolute top-2.5 right-2.5 h-4 w-4 border-t-2 border-r-2 border-white/70" />
-          <CornerBracket className="pointer-events-none absolute bottom-2.5 left-2.5 h-4 w-4 border-b-2 border-l-2 border-white/70" />
-          <CornerBracket className="pointer-events-none absolute right-2.5 bottom-2.5 h-4 w-4 border-r-2 border-b-2 border-white/70" />
-        </div>
+        <motion.div
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="relative h-full w-full [clip-path:circle(50%)]"
+        >
+          <Image
+            src="/images/sajid-ali-portrait-ring.png"
+            alt="Sajid Ali — Enterprise Technology Leader"
+            fill
+            sizes="(min-width: 1024px) 420px, (min-width: 640px) 340px, 300px"
+            className="object-contain"
+            priority
+          />
+        </motion.div>
       </div>
 
       {/* annotation baseline — drawn in, then four capability tags read off it
@@ -103,6 +77,6 @@ export function HeroPortrait() {
           </motion.div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }
