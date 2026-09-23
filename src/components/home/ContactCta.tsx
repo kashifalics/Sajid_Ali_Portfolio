@@ -18,10 +18,14 @@ export function ContactCta() {
           </p>
           <Link
             href="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-4px_rgba(37,99,235,0.35)]"
+            className="group mt-8 inline-flex items-center gap-2 rounded-md bg-fg px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent"
           >
             Get in Touch
-            <ArrowRight size={16} aria-hidden="true" />
+            <ArrowRight
+              size={16}
+              aria-hidden="true"
+              className="transition-transform group-hover:translate-x-0.5"
+            />
           </Link>
         </Reveal>
       </Container>

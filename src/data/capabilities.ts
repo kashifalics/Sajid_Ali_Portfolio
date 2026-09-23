@@ -38,7 +38,7 @@ export const capabilityGroups: CapabilityGroup[] = [
   {
     index: "07",
     label: "Enterprise Integration",
-    items: ["Enterprise Integration", "API Integrations", "Government Integrations", "Third-Party Integrations"],
+    items: ["Enterprise Integration", "API Integrations", "Government Integrations", "Third-Party Integrations", "Appian"],
   },
   {
     index: "08",

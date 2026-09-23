@@ -1,5 +1,6 @@
 import { Hero } from "@/components/hero/Hero";
 import { CredibilityStrip } from "@/components/credibility/CredibilityStrip";
+import { TransitionStatement } from "@/components/home/TransitionStatement";
 import { WorkPreview } from "@/components/home/WorkPreview";
 import { ArchitectureDiagram } from "@/components/architecture/ArchitectureDiagram";
 import { CareerSnapshot } from "@/components/home/CareerSnapshot";
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <CredibilityStrip />
+      <TransitionStatement />
       <WorkPreview />
       <ArchitectureDiagram />
       <CareerSnapshot />

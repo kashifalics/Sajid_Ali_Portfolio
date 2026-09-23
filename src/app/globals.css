@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  /* Executive enterprise-architecture palette: white/off-white base,
-     controlled blue accent, dark navy reserved for strategic sections
-     (Architecture at a Glance) rather than the whole site. */
+  /* Executive enterprise-architecture palette: white/off-white base
+     throughout, with a single controlled blue accent. */
   --canvas: #ffffff;
   --raised: #f7f8fa;
   --surface: #ffffff;
@@ -144,26 +143,6 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);
-}
-
-/* ---------- fixed architectural label positions ----------
-   Static (non-animated) positioning around the hero portrait — see
-   HeroOrbit.tsx. Deliberately not animated: continuously-rotating labels
-   read as a generic AI-template flourish rather than an art-directed
-   composition. */
-
-.orbit-item {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: rotate(var(--angle)) translateX(var(--radius));
-}
-
-.orbit-item-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle)));
 }
 
 @keyframes bg-fade-in {
