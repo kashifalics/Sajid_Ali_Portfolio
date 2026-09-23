@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { systems, type SystemProject } from "@/data/projects";
 import { Container } from "@/components/ui/Container";
-import { ProjectDiagram } from "@/components/work/ProjectDiagram";
+import { PROJECT_VISUALS, InspectionTimeline } from "@/components/work/ProjectVisuals";
 import { Work } from "@/components/work/Work";
 import { cn } from "@/lib/utils";
 
@@ -65,6 +65,7 @@ function ProjectPanel({
   active: boolean;
 }) {
   const Icon = PROJECT_ICONS[project.slug] ?? ClipboardCheck;
+  const Visual = PROJECT_VISUALS[project.slug] ?? InspectionTimeline;
   const state = active ? "active" : "inactive";
 
   return (
@@ -150,7 +151,7 @@ function ProjectPanel({
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className={cn("flex min-w-0 flex-1 items-center", reversed && "lg:order-1")}
       >
-        <ProjectDiagram steps={project.flow} shape={project.flowShape} />
+        <Visual steps={project.flow} />
       </motion.div>
     </article>
   );

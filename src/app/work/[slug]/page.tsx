@@ -7,7 +7,7 @@ import { experience } from "@/data/experience";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { EditorialNumber } from "@/components/ui/EditorialNumber";
-import { ProjectDiagram } from "@/components/work/ProjectDiagram";
+import { PROJECT_VISUALS, InspectionTimeline } from "@/components/work/ProjectVisuals";
 
 export async function generateStaticParams() {
   return systems.map((project) => ({ slug: project.slug }));
@@ -35,6 +35,7 @@ export default async function ProjectPage({ params }: PageProps<"/work/[slug]">)
   const relatedExperience = experience.find((entry) =>
     project.role.includes(entry.company)
   );
+  const Visual = PROJECT_VISUALS[project.slug] ?? InspectionTimeline;
 
   return (
     <>
@@ -98,7 +99,7 @@ export default async function ProjectPage({ params }: PageProps<"/work/[slug]">)
             </h2>
           </Reveal>
           <Reveal delay={0.1} className="mx-auto mt-10 max-w-xl">
-            <ProjectDiagram steps={project.flow} shape={project.flowShape} />
+            <Visual steps={project.flow} />
           </Reveal>
         </Container>
       </section>

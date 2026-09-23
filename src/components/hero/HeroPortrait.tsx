@@ -37,14 +37,22 @@ export function HeroPortrait() {
           transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="relative h-full w-full overflow-hidden rounded-full border-[3px] border-accent shadow-[0_0_24px_-4px_var(--color-accent)]"
         >
-          <Image
-            src="/images/sajid-ali-portrait-ring.png"
-            alt="Sajid Ali — Enterprise Technology Leader"
-            fill
-            sizes="(min-width: 1024px) 420px, (min-width: 640px) 340px, 300px"
-            className="scale-[1.15] object-cover"
-            priority
-          />
+          {/* Zoom lives on this inner wrapper, not the outer frame, so the
+              border/ring/glow stay put and only the photo itself moves. */}
+          <motion.div
+            className="relative h-full w-full"
+            whileHover={shouldReduceMotion ? undefined : { scale: 1.08 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Image
+              src="/images/sajid-ali-portrait-ring.png"
+              alt="Sajid Ali — Enterprise Technology Leader"
+              fill
+              sizes="(min-width: 1024px) 420px, (min-width: 640px) 340px, 300px"
+              className="scale-[1.15] object-cover"
+              priority
+            />
+          </motion.div>
         </motion.div>
       </div>
 

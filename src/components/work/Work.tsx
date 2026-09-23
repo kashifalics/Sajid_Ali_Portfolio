@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { systems } from "@/data/projects";
 import { Reveal } from "@/components/ui/Reveal";
 import { EditorialNumber } from "@/components/ui/EditorialNumber";
-import { ProjectDiagram } from "@/components/work/ProjectDiagram";
+import { PROJECT_VISUALS, InspectionTimeline } from "@/components/work/ProjectVisuals";
 import { cn } from "@/lib/utils";
 
 export function Work() {
@@ -11,6 +11,7 @@ export function Work() {
     <div className="border-t border-hairline">
       {systems.map((project, i) => {
         const reversed = i % 2 === 1;
+        const Visual = PROJECT_VISUALS[project.slug] ?? InspectionTimeline;
         return (
           <Reveal key={project.slug}>
             <article className="group grid gap-10 border-b border-hairline py-14 lg:grid-cols-2 lg:gap-16">
@@ -50,7 +51,7 @@ export function Work() {
               </div>
 
               <div className={cn("flex items-center", reversed && "lg:order-1")}>
-                <ProjectDiagram steps={project.flow} shape={project.flowShape} />
+                <Visual steps={project.flow} />
               </div>
             </article>
           </Reveal>
