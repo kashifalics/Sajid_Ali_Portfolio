@@ -1,4 +1,5 @@
 import { Hero } from "@/components/hero/Hero";
+import { SkillsMarquee } from "@/components/home/SkillsMarquee";
 import { TransitionStatement } from "@/components/home/TransitionStatement";
 import { WorkPreview } from "@/components/home/WorkPreview";
 import { ArchitectureDiagram } from "@/components/architecture/ArchitectureDiagram";
@@ -16,6 +17,7 @@ export default function Home() {
     <>
       <HomeSectionNav />
       <Hero />
+      <SkillsMarquee />
       <TransitionStatement />
       <WorkPreview />
       <ArchitectureDiagram />

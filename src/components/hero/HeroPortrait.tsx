@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { orbitExpertise } from "@/data/expertise";
-import { profile } from "@/data/profile";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 
 export function HeroPortrait() {
@@ -11,14 +10,6 @@ export function HeroPortrait() {
 
   return (
     <div className="mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[420px]">
-      {/* top technical caption row — real professional information (years
-          of experience, delivery focus, location), not decorative
-          micro-type, so it gets real size/weight/contrast. */}
-      <div className="mb-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1.5 text-[13px] font-semibold tracking-[0.06em] text-fg-body uppercase sm:text-sm">
-        <span>{profile.yearsExperience} Years · Enterprise Delivery</span>
-        <span className="shrink-0">{profile.location}</span>
-      </div>
-
       {/* The portrait is already a complete, self-contained circular
           composition (its own background + ring) — shown whole via
           object-contain, no crop into the portrait itself. Note: the

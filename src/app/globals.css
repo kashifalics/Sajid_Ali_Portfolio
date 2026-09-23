@@ -204,6 +204,50 @@ body {
   color: var(--accent);
 }
 
+/* ---------- skills marquee ----------
+   Pure CSS infinite scroll: the track renders its item list twice back to
+   back and translates exactly -50%, so the loop point is invisible
+   regardless of content width. The global reduced-motion block below
+   already forces a single ~0-duration iteration for every animation on
+   the page, which lands this at its un-animated rest position (no jump,
+   no spin) for visitors who prefer no motion — no extra JS needed. */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.marquee-track-left {
+  animation-name: marquee-left;
+}
+
+.marquee-track-right {
+  animation-name: marquee-right;
+}
+
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+
 @keyframes bg-fade-in {
   from {
     opacity: 0;

@@ -9,7 +9,6 @@ import { Container } from "@/components/ui/Container";
 import { HeroPortrait } from "@/components/hero/HeroPortrait";
 import { HeroNetwork } from "@/components/hero/HeroNetwork";
 import { DynamicRole } from "@/components/hero/DynamicRole";
-import { HeroIndex } from "@/components/hero/HeroIndex";
 import { LinkedInIcon, WhatsAppIcon } from "@/components/ui/icons";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 
@@ -60,7 +59,7 @@ export function Hero() {
     <section
       id="home"
       ref={heroRef}
-      className="relative z-10 overflow-hidden pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20"
+      className="relative z-10 overflow-hidden pt-24 pb-8 md:pt-28 md:pb-10"
     >
       <HeroNetwork />
 
@@ -111,6 +110,15 @@ export function Hero() {
             >
               <motion.div variants={itemVariants}>
                 <DynamicRole />
+              </motion.div>
+
+              <motion.div
+                variants={itemVariants}
+                className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[13px] font-semibold tracking-[0.06em] text-fg-body uppercase sm:text-sm"
+              >
+                <span>{profile.yearsExperience} Years · Enterprise Delivery</span>
+                <span aria-hidden="true" className="h-3.5 w-px bg-hairline-strong" />
+                <span>{profile.location}</span>
               </motion.div>
 
               <motion.p variants={itemVariants} className="text-body mt-5 max-w-lg">
@@ -183,14 +191,6 @@ export function Hero() {
           <motion.div style={shouldReduceMotion ? undefined : { y: portraitY }}>
             <HeroPortrait />
           </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: shouldReduceMotion ? 0 : 1.3, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <HeroIndex />
         </motion.div>
       </Container>
     </section>
