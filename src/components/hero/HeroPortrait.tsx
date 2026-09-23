@@ -42,6 +42,7 @@ export function HeroPortrait() {
           <motion.div
             className="relative h-full w-full"
             whileHover={shouldReduceMotion ? undefined : { scale: 1.08 }}
+            whileTap={shouldReduceMotion ? undefined : { scale: 1.08 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           >
             <Image

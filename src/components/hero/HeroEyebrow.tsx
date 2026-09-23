@@ -14,7 +14,10 @@ import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 // framer-motion variant propagation through the intervening plain <span> —
 // propagation through a non-motion wrapper turned out not to reach these
 // children reliably, so each blob's `animate` is computed directly here
-// instead of trusting inherited variant context.
+// instead of trusting inherited variant context. onHoverStart/onHoverEnd
+// never fire for touch pointers (framer-motion suppresses them there on
+// purpose, to avoid hover getting "stuck" after a tap), so onTapStart/
+// onTap/onTapCancel drive the same state for touch devices.
 const flames = [
   { left: "14%", size: 16, delay: 0 },
   { left: "32%", size: 22, delay: 0.15 },
@@ -35,6 +38,9 @@ export function HeroEyebrow({ children }: { children: React.ReactNode }) {
       transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.1 }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
+      onTapStart={() => setHovered(true)}
+      onTap={() => setHovered(false)}
+      onTapCancel={() => setHovered(false)}
       className="section-label relative isolate cursor-default overflow-visible"
     >
       {!shouldReduceMotion ? (

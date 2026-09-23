@@ -90,9 +90,10 @@ export function ArchitectureDiagram() {
                 <StaggerItem key={layer.label}>
                   <motion.div
                     whileHover="hover"
+                    whileTap="hover"
                     initial="rest"
                     animate="rest"
-                    className="group relative z-10 flex items-center gap-3 overflow-hidden rounded-lg border border-hairline-strong bg-surface px-5 py-3.5 transition-colors duration-300 hover:border-accent/50"
+                    className="group relative z-10 flex items-center gap-3 overflow-hidden rounded-lg border border-hairline-strong bg-surface px-5 py-3.5 transition-colors duration-300 hover:border-accent/50 active:border-accent/50"
                   >
                     <motion.div
                       aria-hidden="true"
@@ -103,7 +104,7 @@ export function ArchitectureDiagram() {
                     <motion.span
                       variants={{ rest: { scale: 1 }, hover: { scale: 1.12 } }}
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                      className="relative shrink-0 text-accent-2 transition-colors duration-300 group-hover:text-accent"
+                      className="relative shrink-0 text-accent-2 transition-colors duration-300 group-hover:text-accent group-active:text-accent"
                     >
                       <layer.icon size={17} aria-hidden="true" />
                     </motion.span>
@@ -129,9 +130,10 @@ export function ArchitectureDiagram() {
                   <motion.li
                     key={concept.label}
                     whileHover="hover"
+                    whileTap="hover"
                     initial="rest"
                     animate="rest"
-                    className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-hairline-strong bg-surface px-3.5 py-2 text-sm font-medium text-fg-body transition-colors duration-300 hover:border-accent/50 hover:text-fg"
+                    className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-hairline-strong bg-surface px-3.5 py-2 text-sm font-medium text-fg-body transition-colors duration-300 hover:border-accent/50 hover:text-fg active:border-accent/50 active:text-fg"
                   >
                     <motion.div
                       aria-hidden="true"
@@ -142,7 +144,7 @@ export function ArchitectureDiagram() {
                     <motion.span
                       variants={{ rest: { scale: 1 }, hover: { scale: 1.15 } }}
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                      className="relative shrink-0 text-accent-2 transition-colors duration-300 group-hover:text-accent"
+                      className="relative shrink-0 text-accent-2 transition-colors duration-300 group-hover:text-accent group-active:text-accent"
                     >
                       <concept.icon size={14} aria-hidden="true" />
                     </motion.span>

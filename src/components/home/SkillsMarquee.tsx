@@ -8,7 +8,7 @@ import {
 function Pill({ skill }: { skill: MarqueeSkill }) {
   const Icon = skill.icon;
   return (
-    <span className="mx-2 flex shrink-0 items-center gap-2 rounded-full border border-hairline bg-surface px-4 py-2 text-sm text-fg-body transition-colors hover:border-accent/50 hover:bg-surface-2 hover:text-fg">
+    <span className="mx-2 flex shrink-0 items-center gap-2 rounded-full border border-hairline bg-surface px-4 py-2 text-sm text-fg-body transition-colors hover:border-accent/50 hover:bg-surface-2 hover:text-fg active:border-accent/50 active:bg-surface-2 active:text-fg">
       <Icon size={15} className="shrink-0 text-accent-2" aria-hidden="true" />
       {skill.label}
     </span>

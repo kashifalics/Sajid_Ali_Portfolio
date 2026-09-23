@@ -30,9 +30,10 @@ export function HowIWork() {
               <StaggerItem key={stage.index} className="relative h-full">
                 <motion.div
                   whileHover="hover"
+                  whileTap="hover"
                   initial="rest"
                   animate="rest"
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-surface p-6 transition-colors duration-300 hover:border-accent/30"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-surface p-6 transition-colors duration-300 hover:border-accent/30 active:border-accent/30"
                 >
                   <motion.div
                     aria-hidden="true"
@@ -49,7 +50,7 @@ export function HowIWork() {
                         hover: { scale: 1.1, rotate: -6 },
                       }}
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                      className="flex h-9 w-9 items-center justify-center rounded-full border border-hairline text-fg-faint transition-colors duration-300 group-hover:border-accent/40 group-hover:text-accent"
+                      className="flex h-9 w-9 items-center justify-center rounded-full border border-hairline text-fg-faint transition-colors duration-300 group-hover:border-accent/40 group-hover:text-accent group-active:border-accent/40 group-active:text-accent"
                     >
                       <Icon size={16} aria-hidden="true" />
                     </motion.span>
