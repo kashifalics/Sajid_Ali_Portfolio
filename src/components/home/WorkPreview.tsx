@@ -5,6 +5,10 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { EditorialNumber } from "@/components/ui/EditorialNumber";
+import { ProjectDiagram } from "@/components/work/ProjectDiagram";
+import { cn } from "@/lib/utils";
+
+const featured = systems.slice(0, 3);
 
 export function WorkPreview() {
   return (
@@ -12,64 +16,58 @@ export function WorkPreview() {
       <Container>
         <SectionHeading
           eyebrow="Work"
-          title="Selected Enterprise Work"
+          title="Selected Enterprise Systems"
           description="Enterprise systems, workflows and platforms developed across regulated and institutional environments."
         />
 
         <div className="mt-10 border-t border-hairline">
-          {systems.map((project) => (
-            <Reveal key={project.slug}>
-              <div className="group border-b border-hairline">
-                <Link
-                  href={`/work/${project.slug}`}
-                  className="flex items-center justify-between gap-6 py-6 transition-colors group-hover:bg-surface-2"
-                >
-                  <div className="flex items-baseline gap-5">
-                    <EditorialNumber
-                      value={project.index}
-                      className="text-sm transition-colors group-hover:text-accent"
-                    />
-                    <div>
-                      <h3 className="text-lg font-semibold text-fg sm:text-xl">
-                        {project.title}
-                      </h3>
-                      <p className="mt-0.5 text-xs tracking-wide text-fg-faint uppercase">
-                        {project.category}
-                      </p>
-                    </div>
-                  </div>
-                  <ArrowRight
-                    size={18}
-                    className="shrink-0 text-fg-faint transition-all group-hover:translate-x-1 group-hover:text-accent"
-                    aria-hidden="true"
-                  />
-                </Link>
+          {featured.map((project, i) => {
+            const reversed = i % 2 === 1;
+            return (
+              <Reveal key={project.slug}>
+                <article className="group grid gap-10 border-b border-hairline py-14 lg:grid-cols-2 lg:gap-16">
+                  <div className={cn("flex flex-col justify-center", reversed && "lg:order-2")}>
+                    <EditorialNumber value={project.index} className="text-3xl sm:text-4xl" />
+                    <p className="mt-4 text-xs font-semibold tracking-[0.14em] text-fg-faint uppercase">
+                      {project.category}
+                    </p>
+                    <h3 className="mt-2 text-2xl font-semibold text-fg sm:text-3xl">
+                      {project.title}
+                    </h3>
 
-                {/* hover-reveal system flow preview — CSS-only height reveal,
-                    no layout shift for viewers who never hover it. */}
-                <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr]">
-                  <div className="overflow-hidden">
-                    <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2 pb-6 pl-0 sm:pl-[3.25rem]">
-                      {project.flow.map((step, i) => (
-                        <span key={step} className="flex items-center gap-1.5">
-                          <span className="rounded-full border border-hairline bg-surface px-2.5 py-1 text-[11px] font-medium text-fg-muted">
-                            {step}
-                          </span>
-                          {i < project.flow.length - 1 ? (
-                            <ArrowRight
-                              size={11}
-                              className="shrink-0 text-fg-faint"
-                              aria-hidden="true"
-                            />
-                          ) : null}
+                    <p className="text-body mt-5 max-w-xl">{project.description}</p>
+
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-hairline px-2.5 py-1 text-xs text-fg-muted"
+                        >
+                          {tag}
                         </span>
                       ))}
                     </div>
+
+                    <Link
+                      href={`/work/${project.slug}`}
+                      className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-fg"
+                    >
+                      View Case
+                      <ArrowRight
+                        size={16}
+                        className="transition-transform group-hover:translate-x-1"
+                        aria-hidden="true"
+                      />
+                    </Link>
                   </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+
+                  <div className={cn("flex items-center", reversed && "lg:order-1")}>
+                    <ProjectDiagram steps={project.flow} shape={project.flowShape} />
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
 
         <Link
