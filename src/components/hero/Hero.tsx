@@ -9,6 +9,7 @@ import { Container } from "@/components/ui/Container";
 import { HeroPortrait } from "@/components/hero/HeroPortrait";
 import { HeroNetwork } from "@/components/hero/HeroNetwork";
 import { DynamicRole } from "@/components/hero/DynamicRole";
+import { HeroEyebrow } from "@/components/hero/HeroEyebrow";
 import { LinkedInIcon, WhatsAppIcon } from "@/components/ui/icons";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 
@@ -69,14 +70,7 @@ export function Hero() {
           className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10"
         >
           <div className="max-w-xl">
-            <motion.span
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.1 }}
-              className="section-label"
-            >
-              {profile.eyebrow}
-            </motion.span>
+            <HeroEyebrow>{profile.eyebrow}</HeroEyebrow>
 
             <h1 className="mt-5 text-5xl leading-[0.95] font-bold tracking-tight sm:text-6xl lg:text-7xl">
               <span className="block overflow-hidden">
