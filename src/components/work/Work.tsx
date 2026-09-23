@@ -30,7 +30,7 @@ export function Work() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-hairline px-2.5 py-1 text-xs text-fg-muted"
+                      className="rounded-full border border-hairline-strong bg-surface px-2.5 py-1 text-xs font-medium text-fg-muted transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:bg-accent-3 hover:text-fg"
                     >
                       {tag}
                     </span>
