@@ -1,11 +1,11 @@
-import { Mail } from "lucide-react";
-import { profile, whatsappHref } from "@/data/profile";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { profile } from "@/data/profile";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { LinkedInIcon, WhatsAppIcon } from "@/components/ui/icons";
-import { cn } from "@/lib/utils";
+import { LinkedInIcon } from "@/components/ui/icons";
+import { ContactForm } from "@/components/contact/ContactForm";
 
-const methods = [
+const contactInfo = [
   {
     label: "Email",
     value: profile.email,
@@ -13,74 +13,92 @@ const methods = [
     icon: Mail,
     external: false,
   },
+  ...(profile.phone
+    ? [
+        {
+          label: "Phone",
+          value: profile.phone,
+          href: `tel:${profile.phone}`,
+          icon: Phone,
+          external: false,
+        },
+      ]
+    : []),
+  {
+    label: "Location",
+    value: profile.location,
+    href: undefined,
+    icon: MapPin,
+    external: false,
+  },
   {
     label: "LinkedIn",
-    value: "LinkedIn Profile",
+    value: profile.linkedinLabel,
     href: profile.linkedin,
     icon: LinkedInIcon,
     external: true,
   },
-  ...(whatsappHref
-    ? [
-        {
-          label: "WhatsApp",
-          value: "WhatsApp",
-          href: whatsappHref,
-          icon: WhatsAppIcon,
-          external: true,
-        },
-      ]
-    : []),
 ];
 
 export function Contact() {
   return (
-    <section className="relative z-10 overflow-hidden py-20 md:py-28">
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 select-none text-center font-bold whitespace-nowrap text-fg opacity-[0.035]"
-        style={{ fontSize: "clamp(6rem, 22vw, 16rem)", lineHeight: 1 }}
-      >
-        SAJID
-      </span>
-
+    <section className="relative z-10 py-8 md:py-12">
       <Container>
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="section-label">Contact</span>
-          <h2 className="mt-6 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-            Let&apos;s Talk Technology.
-          </h2>
-          <p className="text-body mt-5">
-            For enterprise systems, architecture, technical leadership or
-            complex software initiatives, get in touch.
-          </p>
-
+        <Reveal className="relative overflow-hidden rounded-3xl border border-hairline bg-raised">
           <div
-            className={cn(
-              "mt-12 grid gap-4",
-              methods.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"
-            )}
-          >
-            {methods.map((method) => {
-              const Icon = method.icon;
-              return (
-                <a
-                  key={method.label}
-                  href={method.href}
-                  target={method.external ? "_blank" : undefined}
-                  rel={method.external ? "noopener noreferrer" : undefined}
-                  className="card-hover group flex flex-col items-center gap-3 rounded-2xl border border-hairline bg-surface px-6 py-6 transition-colors hover:border-accent/40"
-                >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent-3 text-accent transition-colors group-hover:bg-accent group-hover:text-white">
-                    <Icon size={18} aria-hidden="true" />
-                  </span>
-                  <span className="text-sm font-medium text-fg">
-                    {method.label}
-                  </span>
-                  <span className="text-xs text-fg-faint">{method.value}</span>
-                </a>
-              );
-            })}
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-accent/10 blur-3xl"
+          />
+
+          <div className="relative grid lg:grid-cols-2 lg:divide-x lg:divide-hairline">
+            {/* Contact information */}
+            <div className="p-8 sm:p-10 lg:p-12">
+              <p className="text-xs font-semibold tracking-[0.14em] text-fg-faint uppercase">
+                Contact Information
+              </p>
+
+              <div className="mt-8 flex flex-col gap-7">
+                {contactInfo.map((method) => {
+                  const Icon = method.icon;
+                  return (
+                    <div key={method.label} className="flex items-start gap-4">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-3 text-accent">
+                        <Icon size={16} aria-hidden="true" />
+                      </span>
+                      <div>
+                        <p className="text-xs font-semibold tracking-[0.14em] text-fg-faint uppercase">
+                          {method.label}
+                        </p>
+                        {method.href ? (
+                          <a
+                            href={method.href}
+                            target={method.external ? "_blank" : undefined}
+                            rel={method.external ? "noopener noreferrer" : undefined}
+                            className="mt-1 block text-base font-medium text-fg transition-colors hover:text-accent"
+                          >
+                            {method.value}
+                          </a>
+                        ) : (
+                          <p className="mt-1 text-base font-medium text-fg">
+                            {method.value}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Contact form */}
+            <div className="border-t border-hairline p-8 sm:p-10 lg:border-t-0 lg:p-12">
+              <p className="text-xs font-semibold tracking-[0.14em] text-fg-faint uppercase">
+                Send a Message
+              </p>
+              <div className="mt-8">
+                <ContactForm />
+              </div>
+            </div>
           </div>
         </Reveal>
       </Container>

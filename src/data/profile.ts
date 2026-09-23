@@ -21,6 +21,9 @@ export const profile = {
   // checks this and renders nothing when it's blank. Fill in the digits
   // (country code, no "+", no spaces, e.g. "9715XXXXXXXX") to enable it.
   whatsapp: "",
+  // Same as above: no verified phone number in the source material. The
+  // Contact page's "Phone" row only renders when this is non-empty.
+  phone: "",
 } as const;
 
 export const whatsappHref = profile.whatsapp
