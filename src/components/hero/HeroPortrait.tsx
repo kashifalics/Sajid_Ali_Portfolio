@@ -11,8 +11,10 @@ export function HeroPortrait() {
 
   return (
     <div className="mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[420px]">
-      {/* top technical caption row */}
-      <div className="mb-4 flex items-baseline justify-between gap-3 text-[10.5px] font-medium tracking-wide text-fg-faint uppercase">
+      {/* top technical caption row — real professional information (years
+          of experience, delivery focus, location), not decorative
+          micro-type, so it gets real size/weight/contrast. */}
+      <div className="mb-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1.5 text-[13px] font-semibold tracking-[0.06em] text-fg-body uppercase sm:text-sm">
         <span>{profile.yearsExperience} Years · Enterprise Delivery</span>
         <span className="shrink-0">{profile.location}</span>
       </div>

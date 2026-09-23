@@ -9,7 +9,7 @@ const items = [
 
 export function HeroIndex() {
   return (
-    <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-7 border-t border-hairline pt-7 sm:grid-cols-4 lg:mt-16">
+    <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-hairline pt-6 sm:grid-cols-4 lg:mt-12">
       {items.map((item) => (
         <div key={item.index}>
           <EditorialNumber value={item.index} className="text-xs" />

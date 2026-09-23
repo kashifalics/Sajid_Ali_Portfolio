@@ -29,7 +29,7 @@ export function DynamicRole() {
   // hydration) — branching the returned tree itself causes a hydration
   // mismatch, since the server can't know the client's motion preference.
   return (
-    <div className="relative mt-3 h-8 overflow-hidden sm:h-9">
+    <div className="relative mt-3 h-9 overflow-hidden sm:h-10">
       <AnimatePresence mode="wait">
         <motion.p
           key={roles[index]}
@@ -40,7 +40,7 @@ export function DynamicRole() {
             duration: shouldReduceMotion ? 0 : 0.5,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="absolute inset-x-0 top-0 text-xl leading-snug font-medium text-accent sm:text-2xl"
+          className="absolute inset-x-0 top-0 text-2xl leading-snug font-semibold text-accent sm:text-3xl"
         >
           {roles[index]}
         </motion.p>

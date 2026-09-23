@@ -7,6 +7,7 @@ import { ArrowRight, ExternalLink, Mail } from "lucide-react";
 import { profile, whatsappHref } from "@/data/profile";
 import { Container } from "@/components/ui/Container";
 import { HeroPortrait } from "@/components/hero/HeroPortrait";
+import { HeroNetwork } from "@/components/hero/HeroNetwork";
 import { DynamicRole } from "@/components/hero/DynamicRole";
 import { HeroIndex } from "@/components/hero/HeroIndex";
 import { LinkedInIcon, WhatsAppIcon } from "@/components/ui/icons";
@@ -59,12 +60,14 @@ export function Hero() {
     <section
       id="home"
       ref={heroRef}
-      className="relative z-10 overflow-hidden pt-32 pb-16 md:pb-20 lg:flex lg:min-h-[86vh] lg:items-center lg:pb-24"
+      className="relative z-10 overflow-hidden pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20"
     >
+      <HeroNetwork />
+
       <Container className="relative w-full">
         <motion.div
           style={shouldReduceMotion ? undefined : { y: contentY }}
-          className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12"
+          className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10"
         >
           <div className="max-w-xl">
             <motion.span
@@ -76,7 +79,7 @@ export function Hero() {
               {profile.eyebrow}
             </motion.span>
 
-            <h1 className="mt-6 text-5xl leading-[0.95] font-bold tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="mt-5 text-5xl leading-[0.95] font-bold tracking-tight sm:text-6xl lg:text-7xl">
               <span className="block overflow-hidden">
                 <motion.span
                   variants={lineVariants}
@@ -116,7 +119,7 @@ export function Hero() {
 
               <motion.div
                 variants={itemVariants}
-                className="mt-10 flex flex-wrap items-center gap-3.5"
+                className="mt-8 flex flex-wrap items-center gap-3"
               >
                 <Link
                   href="/contact"
