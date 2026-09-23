@@ -10,17 +10,17 @@ export function ContactCta() {
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="section-label">Contact</span>
           <h2 className="mt-6 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-            Let&apos;s Talk Technology
+            Have an Enterprise System to Solve?
           </h2>
           <p className="text-body mt-5">
-            For enterprise systems, architecture, technical leadership or
-            complex software initiatives, get in touch.
+            For architecture leadership, enterprise modernization, system
+            design or technical consulting conversations.
           </p>
           <Link
             href="/contact"
-            className="group mt-8 inline-flex items-center gap-2 rounded-md bg-fg px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent"
+            className="group mt-8 inline-flex items-center gap-2 rounded-md bg-cta px-7 py-3.5 text-sm font-semibold text-cta-fg transition-colors hover:bg-accent hover:text-white"
           >
-            Get in Touch
+            Book a Consultation
             <ArrowRight
               size={16}
               aria-hidden="true"

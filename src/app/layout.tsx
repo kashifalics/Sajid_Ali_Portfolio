@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { profile } from "@/data/profile";
@@ -6,6 +6,7 @@ import { SiteBackground } from "@/components/background/SiteBackground";
 import { Navigation } from "@/components/navigation/Navigation";
 import { Footer } from "@/components/footer/Footer";
 import { PageTransition } from "@/components/ui/PageTransition";
+import { themeInitScript } from "@/lib/theme";
 
 const siteUrl = "https://sajidali.dev";
 const title = "Sajid Ali — Solutions Architect & Enterprise Full-Stack Engineer";
@@ -69,6 +70,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#070b14" },
+    { media: "(prefers-color-scheme: light)", color: "#070b14" },
+  ],
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -95,8 +103,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${GeistSans.variable} h-full overflow-x-hidden`}
+      // The blocking theme script below sets data-theme on this element
+      // before hydration for returning light-mode visitors — React's
+      // sanctioned escape hatch for exactly this "external script sets an
+      // attribute on <html> before hydration" pattern.
+      suppressHydrationWarning
     >
       <body className="min-h-full overflow-x-hidden bg-canvas text-fg antialiased selection:bg-accent/20">
+        {/* Blocking (no defer/async) and placed first so it runs before
+            paint — sets data-theme="light" immediately for returning
+            visitors who chose light mode, avoiding a flash of dark theme. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

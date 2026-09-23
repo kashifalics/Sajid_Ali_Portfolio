@@ -1,8 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  /* Executive enterprise-architecture palette: white/off-white base
-     throughout, with a single controlled blue accent. */
+  /* "Enterprise Systems in Motion" — dark-first architectural palette.
+     Dark is the primary experience; see [data-theme="light"] below for
+     the secondary light mode. Both share the same accent blue/cyan and
+     the same component structure — only the surface/text roles flip. */
+  --canvas: #070b14;
+  --raised: #0b1220;
+  --surface: #111827;
+  --surface-2: #172033;
+
+  --fg: #ffffff;
+  --fg-body: #cbd5e1;
+  --fg-muted: #94a3b8;
+  --fg-faint: #7c8aa0;
+
+  /* Brightened from the brand's #2563EB for dark surfaces — plain #2563EB
+     only clears ~3.1-3.8:1 here, which fails AA for normal-sized text used
+     throughout the site (link text, labels). #4F8FF7 clears 4.5:1+ against
+     every surface tier while still reading clearly as "blue" against the
+     cyan accent-2. */
+  --accent: #4f8ff7;
+  --accent-2: #38bdf8;
+  --accent-3: rgba(37, 99, 235, 0.16);
+
+  --hairline: #1e293b;
+  --hairline-strong: rgba(59, 130, 246, 0.35);
+
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --grid-line-major: rgba(56, 189, 248, 0.07);
+  --card-shadow: 0 8px 28px -10px rgba(0, 0, 0, 0.45);
+
+  /* Solid CTA button — deliberately its own token rather than reusing
+     --fg/--canvas, since it needs to invert independently of them: the
+     "maximum contrast" button in dark mode is a light chip, and in light
+     mode is a dark chip. */
+  --cta-bg: #f8fafc;
+  --cta-fg: #0b1220;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
   --canvas: #ffffff;
   --raised: #f7f8fa;
   --surface: #ffffff;
@@ -11,9 +50,6 @@
   --fg: #0b1220;
   --fg-body: #33404f;
   --fg-muted: #526071;
-  /* #7B8492 (the literal spec value) fails WCAG AA at ~3.5-3.8:1 against
-     these light backgrounds; darkened to clear 4.5:1 while staying the
-     lightest/faintest text tier. */
   --fg-faint: #62707f;
 
   --accent: #2563eb;
@@ -22,6 +58,13 @@
 
   --hairline: #e2e8f0;
   --hairline-strong: rgba(37, 99, 235, 0.25);
+
+  --grid-line: rgba(11, 18, 32, 0.035);
+  --grid-line-major: rgba(37, 99, 235, 0.05);
+  --card-shadow: 0 8px 24px -8px rgba(11, 18, 32, 0.12);
+
+  --cta-bg: #0b1220;
+  --cta-fg: #ffffff;
 
   color-scheme: light;
 }
@@ -40,6 +83,9 @@
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
   --color-accent-3: var(--accent-3);
+
+  --color-cta: var(--cta-bg);
+  --color-cta-fg: var(--cta-fg);
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui,
     -apple-system, "Segoe UI", sans-serif;
@@ -60,7 +106,7 @@ body {
 }
 
 ::selection {
-  background: rgba(37, 99, 235, 0.14);
+  background: rgba(37, 99, 235, 0.3);
   color: var(--fg);
 }
 
@@ -99,7 +145,7 @@ body {
 }
 
 .card-hover:hover {
-  box-shadow: 0 8px 24px -8px rgba(11, 18, 32, 0.12);
+  box-shadow: var(--card-shadow);
 }
 
 .mask-fade-x {
@@ -117,10 +163,10 @@ body {
 .bg-grid {
   background-image: linear-gradient(
       to right,
-      rgba(11, 18, 32, 0.035) 1px,
+      var(--grid-line) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgba(11, 18, 32, 0.035) 1px, transparent 1px);
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 88px 88px;
   mask-image: radial-gradient(
     ellipse 75% 65% at 62% 0%,
@@ -129,16 +175,16 @@ body {
   );
 }
 
-/* drafting-paper accent: every 4th line drawn a touch stronger, like a
+/* drafting-paper accent: a coarser secondary grid layered on top, like a
    blueprint's major grid — reinforces "architectural instrument" without
    reading as plain graph paper. */
 .bg-grid-major {
   background-image: linear-gradient(
       to right,
-      rgba(37, 99, 235, 0.05) 1px,
+      var(--grid-line-major) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+    linear-gradient(to bottom, var(--grid-line-major) 1px, transparent 1px);
   background-size: 352px 352px;
 }
 

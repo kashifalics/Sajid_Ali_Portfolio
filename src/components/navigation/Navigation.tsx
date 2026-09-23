@@ -8,6 +8,7 @@ import { navLinks } from "@/data/content";
 import { profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 import { LinkedInIcon } from "@/components/ui/icons";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 function isLinkActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -62,7 +63,7 @@ export function Navigation() {
     <header ref={headerRef} className="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
       <div className="mx-auto w-full max-w-[1240px]">
         <nav
-          className="flex h-16 items-center justify-between rounded-[20px] border border-hairline bg-surface/90 px-5 shadow-[0_10px_30px_-15px_rgba(11,18,32,0.12)] backdrop-blur-md sm:px-7"
+          className="flex h-16 items-center justify-between rounded-[20px] border border-hairline bg-surface/90 px-5 shadow-[var(--card-shadow)] backdrop-blur-md sm:px-7"
           aria-label="Primary"
         >
           <Link
@@ -100,6 +101,7 @@ export function Navigation() {
           </ul>
 
           <div className="hidden items-center gap-3 lg:flex">
+            <ThemeToggle />
             <span aria-hidden="true" className="h-6 w-px bg-hairline" />
             <a
               href={profile.linkedin}
@@ -128,7 +130,7 @@ export function Navigation() {
         {open ? (
           <div
             id="mobile-menu"
-            className="mt-2 rounded-[20px] border border-hairline bg-surface/95 px-4 pb-4 pt-2 shadow-[0_10px_30px_-15px_rgba(11,18,32,0.12)] backdrop-blur-md lg:hidden"
+            className="mt-2 rounded-[20px] border border-hairline bg-surface/95 px-4 pb-4 pt-2 shadow-[var(--card-shadow)] backdrop-blur-md lg:hidden"
           >
             <ul className="flex flex-col gap-1">
               {navLinks.map((link) => {
@@ -151,16 +153,19 @@ export function Navigation() {
                 );
               })}
             </ul>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={linkedInAriaLabel}
-              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-hairline-strong bg-surface px-5 py-3 text-sm font-medium text-fg transition-colors hover:border-accent hover:bg-accent hover:text-white"
-            >
-              <LinkedInIcon className="h-[18px] w-[18px]" />
-              LinkedIn
-            </a>
+            <div className="mt-3 flex items-center gap-2">
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={linkedInAriaLabel}
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-hairline-strong bg-surface px-5 py-3 text-sm font-medium text-fg transition-colors hover:border-accent hover:bg-accent hover:text-white"
+              >
+                <LinkedInIcon className="h-[18px] w-[18px]" />
+                LinkedIn
+              </a>
+              <ThemeToggle className="h-11 w-11" />
+            </div>
           </div>
         ) : null}
       </div>

@@ -119,20 +119,20 @@ export function Hero() {
                 className="mt-10 flex flex-wrap items-center gap-3.5"
               >
                 <Link
-                  href="/work"
-                  className="group inline-flex items-center gap-2 rounded-md bg-fg px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                  href="/contact"
+                  className="group inline-flex items-center gap-2 rounded-md bg-cta px-6 py-3.5 text-sm font-semibold text-cta-fg transition-colors hover:bg-accent hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 >
-                  View Selected Work
+                  Book a Consultation
                   <ArrowRight
                     size={16}
                     className="transition-transform group-hover:translate-x-0.5"
                   />
                 </Link>
                 <Link
-                  href="/experience"
+                  href="/work"
                   className="group inline-flex items-center gap-2 rounded-md border border-hairline-strong bg-surface px-6 py-3.5 text-sm font-semibold text-fg transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 >
-                  Explore Experience
+                  View Selected Work
                   <ArrowRight
                     size={16}
                     className="transition-transform group-hover:translate-x-0.5"
