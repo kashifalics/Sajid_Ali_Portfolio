@@ -1,0 +1,9 @@
+# Force these as binary regardless of platform line-ending settings —
+# CRLF conversion would silently corrupt them.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
