@@ -2,12 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ExternalLink, Mail } from "lucide-react";
 import { profile, whatsappHref } from "@/data/profile";
 import { Container } from "@/components/ui/Container";
@@ -15,9 +10,10 @@ import { HeroPortrait } from "@/components/hero/HeroPortrait";
 import { DynamicRole } from "@/components/hero/DynamicRole";
 import { HeroIndex } from "@/components/hero/HeroIndex";
 import { LinkedInIcon, WhatsAppIcon } from "@/components/ui/icons";
+import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 
 export function Hero() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({

@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 
 type RevealProps = {
   children: ReactNode;
@@ -19,7 +20,7 @@ export function Reveal({
   y = 20,
   once = true,
 }: RevealProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
 
   const variants: Variants = {
     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : y },
@@ -83,7 +84,7 @@ export function StaggerItem({
   className?: string;
   y?: number;
 }) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
 
   return (
     <motion.div

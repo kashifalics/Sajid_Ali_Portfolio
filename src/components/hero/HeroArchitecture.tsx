@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 
 type Node = { id: string; x: number; y: number; label?: string };
 type Edge = { from: string; to: string; delay: number };
@@ -29,7 +30,7 @@ const edges: Edge[] = [
 const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
 
 export function HeroArchitecture() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
 
   return (
     <svg

@@ -1,17 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { orbitExpertise } from "@/data/expertise";
 import { profile } from "@/data/profile";
 import { HeroArchitecture } from "@/components/hero/HeroArchitecture";
+import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 
 function CornerBracket({ className }: { className: string }) {
   return <span aria-hidden="true" className={className} />;
 }
 
 export function HeroPortrait() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
 
   return (
     <motion.div

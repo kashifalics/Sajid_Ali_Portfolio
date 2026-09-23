@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 
 // The first entry is the primary identity and stays on screen longest before
 // the cycle begins — this is a supporting detail, not the headline claim.
@@ -13,7 +14,7 @@ const roles = [
 ];
 
 export function DynamicRole() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
   const [index, setIndex] = useState(0);
 
   useEffect(() => {

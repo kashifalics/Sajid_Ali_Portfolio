@@ -14,10 +14,11 @@ import {
   Landmark,
   type LucideIcon,
 } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
+import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 
 const layers: { label: string; icon: LucideIcon }[] = [
   { label: "User / Business", icon: Users },
@@ -37,7 +38,7 @@ const surroundingConcepts: { label: string; icon: LucideIcon }[] = [
 ];
 
 export function ArchitectureDiagram() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
 
   return (
     <section className="relative z-10 py-20 md:py-28">

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 import {
   ClipboardList,
   CalendarClock,
@@ -75,7 +76,7 @@ function StepNode({ step, index }: { step: string; index: number }) {
 }
 
 function VerticalConnector() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
   return (
     <svg viewBox="0 0 24 40" width="24" height="40" className="text-accent" aria-hidden="true">
       <motion.path
