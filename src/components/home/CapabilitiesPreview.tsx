@@ -4,7 +4,7 @@ import { capabilityGroups } from "@/data/capabilities";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
-import { EditorialNumber } from "@/components/ui/EditorialNumber";
+import { CapabilityCard } from "@/components/capabilities/CapabilityCard";
 
 export function CapabilitiesPreview() {
   return (
@@ -16,11 +16,10 @@ export function CapabilitiesPreview() {
           description="Architecture, engineering, platform and delivery capabilities built across sixteen years of enterprise work."
         />
 
-        <StaggerGroup className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-hairline pt-8 sm:grid-cols-4">
+        <StaggerGroup className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {capabilityGroups.map((group) => (
             <StaggerItem key={group.label}>
-              <EditorialNumber value={group.index} className="text-xs" />
-              <p className="mt-2 text-sm font-medium text-fg">{group.label}</p>
+              <CapabilityCard group={group} />
             </StaggerItem>
           ))}
         </StaggerGroup>

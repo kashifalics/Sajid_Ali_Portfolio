@@ -9,7 +9,15 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  ClipboardCheck,
+  MessageSquareWarning,
+  CalendarRange,
+  Gavel,
+  FileBadge2,
+  type LucideIcon,
+} from "lucide-react";
 import { systems, type SystemProject } from "@/data/projects";
 import { Container } from "@/components/ui/Container";
 import { ProjectDiagram } from "@/components/work/ProjectDiagram";
@@ -18,6 +26,34 @@ import { cn } from "@/lib/utils";
 
 const PANEL_VW = 78;
 const GAP_VW = 4;
+
+// One distinct glyph per system, standing in for a real screenshot — these
+// are confidential internal government/insurance platforms, so there are no
+// product screenshots to show, and generic stock imagery would misrepresent
+// them. Each icon is a visual anchor unique to that project's domain rather
+// than a literal picture.
+const PROJECT_ICONS: Record<string, LucideIcon> = {
+  "e-inspection": ClipboardCheck,
+  "e-complaint": MessageSquareWarning,
+  "meeting-management": CalendarRange,
+  "follow-up-enforcement": Gavel,
+  "license-registration": FileBadge2,
+};
+
+const contentVariants = {
+  active: { opacity: 1, y: 0 },
+  inactive: { opacity: 0.45, y: 10 },
+};
+
+const iconVariants = {
+  active: { scale: 1, rotate: 0, opacity: 1 },
+  inactive: { scale: 0.8, rotate: -8, opacity: 0.5 },
+};
+
+const diagramVariants = {
+  active: { opacity: 1, scale: 1 },
+  inactive: { opacity: 0.35, scale: 0.96 },
+};
 
 function ProjectPanel({
   project,
@@ -28,6 +64,9 @@ function ProjectPanel({
   reversed: boolean;
   active: boolean;
 }) {
+  const Icon = PROJECT_ICONS[project.slug] ?? ClipboardCheck;
+  const state = active ? "active" : "inactive";
+
   return (
     <article
       style={{ width: `${PANEL_VW}vw` }}
@@ -38,9 +77,8 @@ function ProjectPanel({
     >
       <div
         className={cn(
-          "relative flex min-w-0 flex-1 flex-col justify-center transition-opacity duration-500",
-          reversed && "lg:order-2",
-          active ? "opacity-100" : "opacity-50"
+          "relative flex min-w-0 flex-1 flex-col justify-center",
+          reversed && "lg:order-2"
         )}
       >
         <span
@@ -50,11 +88,32 @@ function ProjectPanel({
           {project.index}
         </span>
 
-        <div className="relative">
-          <p className="text-xs font-semibold tracking-[0.14em] text-fg-faint uppercase">
-            {project.category}
-          </p>
-          <h3 className="mt-3 text-3xl font-semibold text-fg sm:text-4xl">
+        <motion.div
+          animate={state}
+          initial={false}
+          variants={contentVariants}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="relative"
+        >
+          <div className="flex items-center gap-3">
+            <motion.span
+              animate={state}
+              initial={false}
+              variants={iconVariants}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className={cn(
+                "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border",
+                active ? "border-accent/40 text-accent" : "border-hairline text-fg-faint"
+              )}
+            >
+              <Icon size={17} aria-hidden="true" />
+            </motion.span>
+            <p className="text-xs font-semibold tracking-[0.14em] text-fg-faint uppercase">
+              {project.category}
+            </p>
+          </div>
+
+          <h3 className="mt-4 text-3xl font-semibold text-fg sm:text-4xl">
             {project.title}
           </h3>
           <p className="text-body mt-5 max-w-md">{project.description}</p>
@@ -81,18 +140,18 @@ function ProjectPanel({
               aria-hidden="true"
             />
           </Link>
-        </div>
+        </motion.div>
       </div>
 
-      <div
-        className={cn(
-          "flex min-w-0 flex-1 items-center transition-opacity duration-500",
-          reversed && "lg:order-1",
-          active ? "opacity-100" : "opacity-50"
-        )}
+      <motion.div
+        animate={state}
+        initial={false}
+        variants={diagramVariants}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className={cn("flex min-w-0 flex-1 items-center", reversed && "lg:order-1")}
       >
         <ProjectDiagram steps={project.flow} shape={project.flowShape} />
-      </div>
+      </motion.div>
     </article>
   );
 }
