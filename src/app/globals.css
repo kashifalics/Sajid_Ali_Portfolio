@@ -91,126 +91,160 @@
     -apple-system, "Segoe UI", sans-serif;
 }
 
-* {
-  border-color: var(--hairline);
+/* Everything below lives inside an explicit @layer so it interleaves
+   correctly with Tailwind's own (layered) utilities. CSS cascade layers
+   mean ANY unlayered rule beats ANY layered one regardless of specificity
+   — so plain top-level CSS here would silently win over every Tailwind
+   utility class (e.g. a plain `* { border-color }` reset would beat
+   `.border-accent`, `hover:border-accent`, everything). @layer base /
+   @layer utilities put these rules in the same cascade Tailwind uses, so
+   normal specificity + source-order rules apply as expected. */
+
+@layer base {
+  * {
+    border-color: var(--hairline);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--canvas);
+    color: var(--fg);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: rgba(37, 99, 235, 0.3);
+    color: var(--fg);
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+@layer utilities {
+  .border-hairline {
+    border-color: var(--hairline);
+  }
 
-body {
-  background: var(--canvas);
-  color: var(--fg);
-  font-family: var(--font-sans);
-}
+  .border-hairline-strong {
+    border-color: var(--hairline-strong);
+  }
 
-::selection {
-  background: rgba(37, 99, 235, 0.3);
-  color: var(--fg);
-}
+  .text-balance {
+    text-wrap: balance;
+  }
 
-/* ---------- utilities ---------- */
+  /* Body copy — paragraphs, bullet text. Reserves --fg-muted for true
+     metadata (dates/tags/captions) by giving reading content its own,
+     slightly darker/roomier tier. Two sizes preserve intentional hierarchy
+     (e.g. a highlighted current role vs. a de-emphasized past one). */
+  .text-body {
+    color: var(--fg-body);
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.65;
+  }
 
-.border-hairline {
-  border-color: var(--hairline);
-}
+  .text-body-sm {
+    color: var(--fg-body);
+    font-size: 0.9375rem; /* 15px */
+    line-height: 1.6;
+  }
 
-.border-hairline-strong {
-  border-color: var(--hairline-strong);
-}
+  .card-hover {
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
 
-.text-balance {
-  text-wrap: balance;
-}
+  .card-hover:hover {
+    box-shadow: var(--card-shadow);
+  }
 
-/* Body copy — paragraphs, bullet text. Reserves --fg-muted for true
-   metadata (dates/tags/captions) by giving reading content its own,
-   slightly darker/roomier tier. Two sizes preserve intentional hierarchy
-   (e.g. a highlighted current role vs. a de-emphasized past one). */
-.text-body {
-  color: var(--fg-body);
-  font-size: 1.0625rem; /* 17px */
-  line-height: 1.65;
-}
-
-.text-body-sm {
-  color: var(--fg-body);
-  font-size: 0.9375rem; /* 15px */
-  line-height: 1.6;
-}
-
-.card-hover {
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.card-hover:hover {
-  box-shadow: var(--card-shadow);
-}
-
-.mask-fade-x {
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 8%,
-    black 92%,
-    transparent
-  );
-}
-
-/* ---------- background system ---------- */
-
-.bg-grid {
-  background-image: linear-gradient(
+  .mask-fade-x {
+    mask-image: linear-gradient(
       to right,
-      var(--grid-line) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 88px 88px;
-  mask-image: radial-gradient(
-    ellipse 75% 65% at 62% 0%,
-    black 35%,
-    transparent 88%
-  );
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+  }
+
+  /* ---------- background system ---------- */
+
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        var(--grid-line) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 88px 88px;
+    mask-image: radial-gradient(
+      ellipse 75% 65% at 62% 0%,
+      black 35%,
+      transparent 88%
+    );
+  }
+
+  /* drafting-paper accent: a coarser secondary grid layered on top, like a
+     blueprint's major grid — reinforces "architectural instrument" without
+     reading as plain graph paper. */
+  .bg-grid-major {
+    background-image: linear-gradient(
+        to right,
+        var(--grid-line-major) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, var(--grid-line-major) 1px, transparent 1px);
+    background-size: 352px 352px;
+  }
+
+  /* ---------- section rhythm ---------- */
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid var(--hairline-strong);
+    background: var(--accent-3);
+    padding: 0.3rem 0.85rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ---------- skills marquee ----------
+     Pure CSS infinite scroll: the track renders its item list twice back
+     to back and translates exactly -50%, so the loop point is invisible
+     regardless of content width. The global reduced-motion block below
+     already forces a single ~0-duration iteration for every animation on
+     the page, which lands this at its un-animated rest position (no jump,
+     no spin) for visitors who prefer no motion — no extra JS needed. */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .marquee-track-left {
+    animation-name: marquee-left;
+  }
+
+  .marquee-track-right {
+    animation-name: marquee-right;
+  }
+
+  .marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .animate-bg-fade-in {
+    animation: bg-fade-in 1.4s ease-out both;
+  }
 }
 
-/* drafting-paper accent: a coarser secondary grid layered on top, like a
-   blueprint's major grid — reinforces "architectural instrument" without
-   reading as plain graph paper. */
-.bg-grid-major {
-  background-image: linear-gradient(
-      to right,
-      var(--grid-line-major) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, var(--grid-line-major) 1px, transparent 1px);
-  background-size: 352px 352px;
-}
-
-/* ---------- section rhythm ---------- */
-
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 999px;
-  border: 1px solid var(--hairline-strong);
-  background: var(--accent-3);
-  padding: 0.3rem 0.85rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-/* ---------- skills marquee ----------
-   Pure CSS infinite scroll: the track renders its item list twice back to
-   back and translates exactly -50%, so the loop point is invisible
-   regardless of content width. The global reduced-motion block below
-   already forces a single ~0-duration iteration for every animation on
-   the page, which lands this at its un-animated rest position (no jump,
-   no spin) for visitors who prefer no motion — no extra JS needed. */
 @keyframes marquee-left {
   from {
     transform: translateX(0);
@@ -229,25 +263,6 @@ body {
   }
 }
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-.marquee-track-left {
-  animation-name: marquee-left;
-}
-
-.marquee-track-right {
-  animation-name: marquee-right;
-}
-
-.marquee-row:hover .marquee-track {
-  animation-play-state: paused;
-}
-
 @keyframes bg-fade-in {
   from {
     opacity: 0;
@@ -255,10 +270,6 @@ body {
   to {
     opacity: 1;
   }
-}
-
-.animate-bg-fade-in {
-  animation: bg-fade-in 1.4s ease-out both;
 }
 
 /* ---------- reduced motion ---------- */

@@ -102,14 +102,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} h-full overflow-x-hidden`}
+      className={`${GeistSans.variable} h-full overflow-x-clip`}
       // The blocking theme script below sets data-theme on this element
       // before hydration for returning light-mode visitors — React's
       // sanctioned escape hatch for exactly this "external script sets an
       // attribute on <html> before hydration" pattern.
       suppressHydrationWarning
     >
-      <body className="min-h-full overflow-x-hidden bg-canvas text-fg antialiased selection:bg-accent/20">
+      <body className="min-h-full overflow-x-clip bg-canvas text-fg antialiased selection:bg-accent/20">
         {/* Blocking (no defer/async) and placed first so it runs before
             paint — sets data-theme="light" immediately for returning
             visitors who chose light mode, avoiding a flash of dark theme. */}

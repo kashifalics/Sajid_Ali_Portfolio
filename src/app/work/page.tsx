@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { Container } from "@/components/ui/Container";
-import { Work } from "@/components/work/Work";
+import { ProjectShowcase } from "@/components/work/ProjectShowcase";
 
 export const metadata: Metadata = {
   title: "Enterprise Systems",
@@ -17,11 +16,7 @@ export default function WorkPage() {
         title="Selected Enterprise Systems"
         description="Systems and platforms developed across regulated, government and insurance environments — spanning field operations, consumer complaint handling, governance and regulatory workflows."
       />
-      <div className="pb-14 md:pb-20">
-        <Container>
-          <Work />
-        </Container>
-      </div>
+      <ProjectShowcase />
     </>
   );
 }

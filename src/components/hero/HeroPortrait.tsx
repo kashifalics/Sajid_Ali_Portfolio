@@ -10,14 +10,14 @@ export function HeroPortrait() {
 
   return (
     <div className="mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[420px]">
-      {/* The portrait is already a complete, self-contained circular
-          composition (its own background + ring) — shown whole via
-          object-contain, no crop into the portrait itself. Note: the
-          source file has no alpha channel (flat opaque square behind the
-          ring), invisible against the dark theme's canvas but visible as
-          a hard rectangle in light mode — clipped to a circle so only the
-          flat, content-free corners are removed; face/ring/shoulders are
-          never touched. */}
+      {/* The source photo's own baked-in ring sits at an uneven distance
+          from the square canvas edge (2.4%-4.6% depending on side, measured
+          directly from the file), so clipping at the canvas edge left a
+          visible dark-navy margin around the ring in light mode (invisible
+          in dark mode only because it happens to match the page background).
+          Scaling past that margin crops the image's ring away entirely —
+          the visible boundary is instead a single CSS border drawn here,
+          which is perfectly uniform regardless of the source file. */}
       <div className="relative mx-auto aspect-square w-[clamp(220px,34vw,420px)]">
         <div
           aria-hidden="true"
@@ -27,14 +27,14 @@ export function HeroPortrait() {
           initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative h-full w-full [clip-path:circle(50%)]"
+          className="relative h-full w-full overflow-hidden rounded-full border-[3px] border-accent shadow-[0_0_24px_-4px_var(--color-accent)]"
         >
           <Image
             src="/images/sajid-ali-portrait-ring.png"
             alt="Sajid Ali — Enterprise Technology Leader"
             fill
             sizes="(min-width: 1024px) 420px, (min-width: 640px) 340px, 300px"
-            className="object-contain"
+            className="scale-[1.15] object-cover"
             priority
           />
         </motion.div>
