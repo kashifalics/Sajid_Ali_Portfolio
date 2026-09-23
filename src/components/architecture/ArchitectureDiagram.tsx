@@ -88,16 +88,29 @@ export function ArchitectureDiagram() {
 
               {layers.map((layer, i) => (
                 <StaggerItem key={layer.label}>
-                  <div className="relative z-10 flex items-center gap-3 rounded-lg border border-hairline bg-surface px-5 py-3.5">
-                    <layer.icon
-                      size={17}
-                      className="shrink-0 text-accent-2"
+                  <motion.div
+                    whileHover="hover"
+                    initial="rest"
+                    animate="rest"
+                    className="group relative z-10 flex items-center gap-3 overflow-hidden rounded-lg border border-hairline-strong bg-surface px-5 py-3.5 transition-colors duration-300 hover:border-accent/50"
+                  >
+                    <motion.div
                       aria-hidden="true"
+                      variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
+                      transition={{ duration: 0.3 }}
+                      className="pointer-events-none absolute inset-0 bg-accent-3"
                     />
-                    <span className="text-sm font-medium text-fg">
+                    <motion.span
+                      variants={{ rest: { scale: 1 }, hover: { scale: 1.12 } }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      className="relative shrink-0 text-accent-2 transition-colors duration-300 group-hover:text-accent"
+                    >
+                      <layer.icon size={17} aria-hidden="true" />
+                    </motion.span>
+                    <span className="relative text-base font-semibold text-fg">
                       {layer.label}
                     </span>
-                  </div>
+                  </motion.div>
                   {i < layers.length - 1 ? (
                     <div className="relative z-10 flex justify-center py-2.5">
                       <span className="h-2 w-2 rounded-full border border-accent/60 bg-raised" />
@@ -113,17 +126,28 @@ export function ArchitectureDiagram() {
               </p>
               <ul className="mt-4 flex flex-wrap gap-2.5">
                 {surroundingConcepts.map((concept) => (
-                  <li
+                  <motion.li
                     key={concept.label}
-                    className="flex items-center gap-2 rounded-full border border-hairline px-3.5 py-2 text-sm text-fg-muted"
+                    whileHover="hover"
+                    initial="rest"
+                    animate="rest"
+                    className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-hairline-strong bg-surface px-3.5 py-2 text-sm font-medium text-fg-body transition-colors duration-300 hover:border-accent/50 hover:text-fg"
                   >
-                    <concept.icon
-                      size={14}
-                      className="shrink-0 text-accent-2"
+                    <motion.div
                       aria-hidden="true"
+                      variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
+                      transition={{ duration: 0.3 }}
+                      className="pointer-events-none absolute inset-0 bg-accent-3"
                     />
-                    {concept.label}
-                  </li>
+                    <motion.span
+                      variants={{ rest: { scale: 1 }, hover: { scale: 1.15 } }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      className="relative shrink-0 text-accent-2 transition-colors duration-300 group-hover:text-accent"
+                    >
+                      <concept.icon size={14} aria-hidden="true" />
+                    </motion.span>
+                    <span className="relative">{concept.label}</span>
+                  </motion.li>
                 ))}
               </ul>
             </div>
