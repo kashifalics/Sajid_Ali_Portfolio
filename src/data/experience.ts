@@ -53,7 +53,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     company: "Sefam Pvt Ltd",
-    role: "Software Developer – ASP.NET",
+    role: "Senior Software Engineer",
     period: "August 2015 – March 2016",
     location: "Retail Industry",
     description:
@@ -79,8 +79,8 @@ export const experience: ExperienceEntry[] = [
   },
   {
     company: "DPL",
-    role: "Software Engineer – ASP.NET",
-    period: "June 2010 – September 2014",
+    role: "Software Engineer",
+    period: "July 2013 – August 2014",
     location: undefined,
     description:
       "Led a team of six delivering and maintaining projects under Scrum methodologies, working to demanding deadlines while improving compatibility across mobile and tablet environments.",
@@ -89,5 +89,21 @@ export const experience: ExperienceEntry[] = [
       "Scrum-based delivery under tight deadlines",
       "Mobile and tablet compatibility improvements",
     ],
+  },
+  {
+    company: "Nimble Geeks",
+    role: "Software Engineer",
+    period: "June 2010 – June 2013",
+    location: undefined,
+    description:
+      "Software engineering role early in career, building on the ASP.NET / C# / SQL Server foundation carried through later enterprise roles.",
+  },
+  {
+    company: "IBM",
+    role: "Intern",
+    period: "May 2009 – January 2010",
+    location: undefined,
+    description:
+      "Internship marking the start of a software engineering career.",
   },
 ];

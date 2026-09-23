@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MapPin } from "lucide-react";
+import { Download, Mail, MapPin } from "lucide-react";
 import { profile, whatsappHref } from "@/data/profile";
 import { navLinks } from "@/data/content";
 import { Container } from "@/components/ui/Container";
@@ -87,6 +87,16 @@ export function Footer() {
             <li className="flex items-center gap-2.5 text-sm text-fg-muted">
               <MapPin size={15} className="shrink-0" aria-hidden="true" />
               {profile.location}
+            </li>
+            <li>
+              <a
+                href={profile.resumeUrl}
+                download
+                className="flex items-center gap-2.5 text-sm text-fg-muted transition-colors hover:text-accent"
+              >
+                <Download size={15} className="shrink-0" aria-hidden="true" />
+                Download Resume
+              </a>
             </li>
           </ul>
         </div>

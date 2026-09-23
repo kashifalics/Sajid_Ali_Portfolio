@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ExternalLink, Mail } from "lucide-react";
+import { ArrowRight, Download, ExternalLink, Mail } from "lucide-react";
 import { profile, whatsappHref } from "@/data/profile";
 import { Container } from "@/components/ui/Container";
 import { HeroPortrait } from "@/components/hero/HeroPortrait";
@@ -184,6 +184,14 @@ export function Hero() {
                     WhatsApp
                   </a>
                 ) : null}
+                <a
+                  href={profile.resumeUrl}
+                  download
+                  className="inline-flex items-center gap-2 text-sm text-fg-muted transition-colors hover:text-accent"
+                >
+                  <Download size={15} aria-hidden="true" />
+                  Download Resume
+                </a>
               </motion.div>
             </motion.div>
           </div>

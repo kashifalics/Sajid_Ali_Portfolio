@@ -3,29 +3,37 @@
 import { motion } from "framer-motion";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 
-type Node = { id: string; x: number; y: number; breathe?: boolean };
+type Node = {
+  id: string;
+  x: number;
+  y: number;
+  breathe?: boolean;
+  label?: string;
+  labelAnchor?: "start" | "end";
+};
 type Edge = { from: string; to: string; delay: number };
 
 // A loose, sparse architecture sketch spanning the hero's background — kept
 // deliberately low-opacity so it reads as ambient texture (like the grid
 // already does) rather than a foreground diagram competing with the
 // headline, portrait or CTAs. Biased toward the right/portrait side and
-// the far margins, away from the dense paragraph text on the left.
+// the far margins, away from the dense paragraph text on the left. Four
+// nodes carry a system label (CLOUD / API / MICROSERVICES / DATA) so the
+// portrait reads as sitting inside a real architecture, not just floating
+// near decorative dots.
 const nodes: Node[] = [
   { id: "a", x: 60, y: 120 },
-  { id: "b", x: 760, y: 90, breathe: true },
-  { id: "c", x: 980, y: 200 },
-  { id: "d", x: 1180, y: 140 },
-  { id: "e", x: 1300, y: 340, breathe: true },
-  { id: "f", x: 1080, y: 480 },
+  { id: "cloud", x: 700, y: 190, breathe: true, label: "CLOUD", labelAnchor: "end" },
+  { id: "microservices", x: 1180, y: 150, label: "MICROSERVICES" },
+  { id: "api", x: 1320, y: 250, label: "API" },
+  { id: "data", x: 1300, y: 480, breathe: true, label: "DATA" },
   { id: "g", x: 40, y: 560 },
 ];
 
 const edges: Edge[] = [
-  { from: "b", to: "c", delay: 0.1 },
-  { from: "c", to: "d", delay: 0.24 },
-  { from: "d", to: "e", delay: 0.36 },
-  { from: "c", to: "f", delay: 0.48 },
+  { from: "cloud", to: "microservices", delay: 0.1 },
+  { from: "microservices", to: "api", delay: 0.24 },
+  { from: "api", to: "data", delay: 0.36 },
 ];
 
 const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
@@ -103,6 +111,33 @@ export function HeroNetwork() {
         );
       })}
 
+      {nodes
+        .filter((n) => n.label)
+        .map((node, i) => {
+          const anchor = node.labelAnchor ?? "start";
+          const dx = anchor === "end" ? -9 : 9;
+          return (
+            <motion.text
+              key={`${node.id}-label`}
+              x={node.x + dx}
+              y={node.y}
+              textAnchor={anchor}
+              dominantBaseline="middle"
+              fill="var(--fg-faint)"
+              style={{ fontSize: 10, fontWeight: 500, letterSpacing: "0.12em" }}
+              initial={shouldReduceMotion ? false : { opacity: 0 }}
+              animate={{ opacity: 0.8 }}
+              transition={{
+                duration: 0.6,
+                delay: shouldReduceMotion ? 0 : 1.4 + i * 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              {node.label}
+            </motion.text>
+          );
+        })}
+
       {/* one slow traveling signal — the system "alive", not decorative
           sparkle: it only ever moves along an already-drawn connection. */}
       {!shouldReduceMotion ? (
@@ -111,9 +146,9 @@ export function HeroNetwork() {
           fill="var(--accent-2)"
           initial={{ opacity: 0 }}
           animate={{
-            cx: [byId.c.x, byId.d.x, byId.e.x],
-            cy: [byId.c.y, byId.d.y, byId.e.y],
-            opacity: [0, 0.9, 0.9, 0],
+            cx: [byId.cloud.x, byId.microservices.x, byId.api.x, byId.data.x],
+            cy: [byId.cloud.y, byId.microservices.y, byId.api.y, byId.data.y],
+            opacity: [0, 0.9, 0.9, 0.9, 0],
           }}
           transition={{
             duration: 5,
