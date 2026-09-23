@@ -19,9 +19,17 @@ export function HeroPortrait() {
           the visible boundary is instead a single CSS border drawn here,
           which is perfectly uniform regardless of the source file. */}
       <div className="relative mx-auto aspect-square w-[clamp(220px,34vw,420px)]">
-        <div
+        <motion.div
           aria-hidden="true"
           className="absolute inset-[-8%] rounded-full bg-accent/15 blur-3xl"
+          animate={
+            shouldReduceMotion ? undefined : { opacity: [0.7, 1, 0.7], scale: [1, 1.05, 1] }
+          }
+          transition={
+            shouldReduceMotion
+              ? undefined
+              : { duration: 5, repeat: Infinity, ease: "easeInOut" }
+          }
         />
         <motion.div
           initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}

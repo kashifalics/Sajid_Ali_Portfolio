@@ -20,9 +20,12 @@ type Edge = { from: string; to: string; delay: number };
 // the far margins, away from the dense paragraph text on the left. Four
 // nodes carry a system label (CLOUD / API / MICROSERVICES / DATA) so the
 // portrait reads as sitting inside a real architecture, not just floating
-// near decorative dots.
+// near decorative dots. "core" sits behind the portrait itself — every
+// edge radiates outward from it, and each gets its own traveling pulse, so
+// the portrait reads as the source the system's energy radiates from.
 const nodes: Node[] = [
   { id: "a", x: 60, y: 120 },
+  { id: "core", x: 1010, y: 330, breathe: true },
   { id: "cloud", x: 700, y: 190, breathe: true, label: "CLOUD", labelAnchor: "end" },
   { id: "microservices", x: 1180, y: 150, label: "MICROSERVICES" },
   { id: "api", x: 1320, y: 250, label: "API" },
@@ -31,9 +34,10 @@ const nodes: Node[] = [
 ];
 
 const edges: Edge[] = [
-  { from: "cloud", to: "microservices", delay: 0.1 },
-  { from: "microservices", to: "api", delay: 0.24 },
-  { from: "api", to: "data", delay: 0.36 },
+  { from: "core", to: "cloud", delay: 0.05 },
+  { from: "core", to: "microservices", delay: 0.16 },
+  { from: "core", to: "api", delay: 0.27 },
+  { from: "core", to: "data", delay: 0.38 },
 ];
 
 const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
@@ -138,27 +142,36 @@ export function HeroNetwork() {
           );
         })}
 
-      {/* one slow traveling signal — the system "alive", not decorative
-          sparkle: it only ever moves along an already-drawn connection. */}
-      {!shouldReduceMotion ? (
-        <motion.circle
-          r={2}
-          fill="var(--accent-2)"
-          initial={{ opacity: 0 }}
-          animate={{
-            cx: [byId.cloud.x, byId.microservices.x, byId.api.x, byId.data.x],
-            cy: [byId.cloud.y, byId.microservices.y, byId.api.y, byId.data.y],
-            opacity: [0, 0.9, 0.9, 0.9, 0],
-          }}
-          transition={{
-            duration: 5,
-            delay: 2.2,
-            repeat: Infinity,
-            repeatDelay: 4,
-            ease: "easeInOut",
-          }}
-        />
-      ) : null}
+      {/* one traveling pulse per radiating edge — the system "alive", not
+          decorative sparkle: each only ever moves along its own
+          already-drawn connection, staggered so energy is continuously
+          leaving the core rather than one signal touring the whole map. */}
+      {!shouldReduceMotion
+        ? edges.map((edge, i) => {
+            const a = byId[edge.from];
+            const b = byId[edge.to];
+            return (
+              <motion.circle
+                key={`pulse-${edge.from}-${edge.to}`}
+                r={2}
+                fill="var(--accent-2)"
+                initial={{ opacity: 0 }}
+                animate={{
+                  cx: [a.x, b.x],
+                  cy: [a.y, b.y],
+                  opacity: [0, 1, 0],
+                }}
+                transition={{
+                  duration: 1.8,
+                  delay: 2.4 + i * 0.9,
+                  repeat: Infinity,
+                  repeatDelay: 3.2 + i * 0.4,
+                  ease: "easeInOut",
+                }}
+              />
+            );
+          })
+        : null}
     </svg>
   );
 }
