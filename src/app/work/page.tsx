@@ -17,7 +17,7 @@ export default function WorkPage() {
         title="Selected Enterprise Systems"
         description="Systems and platforms developed across regulated, government and insurance environments — spanning field operations, consumer complaint handling, governance and regulatory workflows."
       />
-      <div className="pb-20 md:pb-28">
+      <div className="pb-14 md:pb-20">
         <Container>
           <Work />
         </Container>

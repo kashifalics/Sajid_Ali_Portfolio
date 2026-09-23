@@ -11,7 +11,7 @@ export function PageHeader({
   description?: string;
 }) {
   return (
-    <div className="pt-32 pb-12 md:pt-40 md:pb-16">
+    <div className="pt-24 pb-8 md:pt-28 md:pb-10">
       <Container>
         <Reveal className="max-w-2xl">
           <span className="section-label">{eyebrow}</span>

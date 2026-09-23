@@ -69,7 +69,7 @@ export function About() {
         </Container>
       </section>
 
-      <section className="relative z-10 py-20 md:py-28">
+      <section className="relative z-10 py-14 md:py-20">
         <Container>
           <Reveal className="max-w-2xl">
             <span className="section-label">How I Think</span>
@@ -94,7 +94,7 @@ export function About() {
         </Container>
       </section>
 
-      <section className="relative z-10 py-20 md:py-28">
+      <section className="relative z-10 py-14 md:py-20">
         <Container>
           <div className="grid gap-12 border-t border-hairline pt-14 lg:grid-cols-2 lg:gap-16">
             <Reveal>

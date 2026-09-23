@@ -6,7 +6,7 @@ import { EditorialNumber } from "@/components/ui/EditorialNumber";
 
 export function ArchitecturePrinciples() {
   return (
-    <section className="relative z-10 py-20 md:py-28">
+    <section className="relative z-10 py-14 md:py-20">
       <Container>
         <SectionHeading eyebrow="Principles" title="Architecture Principles" />
 

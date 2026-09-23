@@ -6,7 +6,7 @@ const steps = ["Architecture", "Systems", "Delivery"];
 
 export function TransitionStatement() {
   return (
-    <section className="relative z-10 py-20 md:py-28">
+    <section className="relative z-10 py-14 md:py-20">
       <Container>
         <StaggerGroup className="flex flex-col items-start gap-1">
           {steps.map((step, i) => (

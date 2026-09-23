@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function AboutSnapshot() {
   return (
-    <section className="relative z-10 py-20 md:py-28">
+    <section className="relative z-10 py-14 md:py-20">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <Reveal>

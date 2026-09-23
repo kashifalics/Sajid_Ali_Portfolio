@@ -38,7 +38,7 @@ export default async function ProjectPage({ params }: PageProps<"/work/[slug]">)
 
   return (
     <>
-      <section className="pt-32 pb-14 md:pt-40 md:pb-16">
+      <section className="pt-24 pb-10 md:pt-28 md:pb-12">
         <Container>
           <Reveal className="max-w-3xl">
             <Link
@@ -89,7 +89,7 @@ export default async function ProjectPage({ params }: PageProps<"/work/[slug]">)
         </Container>
       </section>
 
-      <section className="border-y border-hairline bg-raised py-16 md:py-20">
+      <section className="border-y border-hairline bg-raised py-14 md:py-16">
         <Container>
           <Reveal className="max-w-2xl">
             <span className="section-label">System Flow</span>

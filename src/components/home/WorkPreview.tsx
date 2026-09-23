@@ -8,7 +8,7 @@ import { EditorialNumber } from "@/components/ui/EditorialNumber";
 
 export function WorkPreview() {
   return (
-    <section id="work" className="relative z-10 py-20 md:py-28">
+    <section id="work" className="relative z-10 py-14 md:py-20">
       <Container>
         <SectionHeading
           eyebrow="Work"

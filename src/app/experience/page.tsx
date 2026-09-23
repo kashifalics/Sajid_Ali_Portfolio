@@ -17,7 +17,7 @@ export default function ExperiencePage() {
         title="Sixteen Years of Increasing Scope"
         description="From software engineer to solutions architect — building enterprise systems across financial, insurance and government institutions."
       />
-      <div className="pb-20 md:pb-28">
+      <div className="pb-14 md:pb-20">
         <Container>
           <Experience />
         </Container>

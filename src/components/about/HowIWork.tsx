@@ -5,7 +5,7 @@ import { StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
 
 export function HowIWork() {
   return (
-    <section id="how-i-work" className="relative z-10 scroll-mt-28 py-20 md:py-28">
+    <section id="how-i-work" className="relative z-10 scroll-mt-28 py-14 md:py-20">
       <Container>
         <SectionHeading
           eyebrow="How I Approach Systems"
