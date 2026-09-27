@@ -24,9 +24,11 @@ export const profile = {
   // Same as above: no verified phone number in the source material. The
   // Contact page's "Phone" row only renders when this is non-empty.
   phone: "",
-  // Generated from this project's own established experience/capabilities/
-  // education data (see scripts used to produce it) — not a separately
-  // authored document, so it can't drift from what's on the site.
+  // Sajid's actual resume file, provided directly — not generated from
+  // this project's data. Some details here (e.g. later-role dates) may
+  // differ slightly from the site's own experience data; that's expected
+  // since this is the authoritative source document, not the other way
+  // around.
   resumeUrl: "/resume/sajid-ali-resume.pdf",
 } as const;
 
